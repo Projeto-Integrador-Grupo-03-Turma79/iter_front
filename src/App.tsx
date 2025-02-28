@@ -8,11 +8,14 @@ import ListarVeiculos from "./components/veiculos/listaveiculos/ListarVeiculos"
 import FormVeiculo from "./components/veiculos/formveiculo/FormVeiculo"
 import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo"
 import ListaViagens from './components/viagens/listarviagens/ListarViagens'
+import { AuthProvider } from './contexts/AuthContext'
+import { Route, Routes } from 'react-router-dom'
 
 function App() {
  
   return (
     <>
+    <AuthProvider>
     <BrowserRouter>
     <Navbar />
       <Routes>
@@ -30,6 +33,7 @@ function App() {
       </Routes>
     <Footer />
     </BrowserRouter>
+    </AuthProvider>
     </>
   )
 }
