@@ -1,4 +1,3 @@
-
 import Viagem from "./Viagem";
 
 export default interface Veiculo {

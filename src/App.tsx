@@ -7,6 +7,7 @@ import Navbar from "./components/navbar/Navbar"
 import ListarVeiculos from "./components/veiculos/listaveiculos/ListarVeiculos"
 import FormVeiculo from "./components/veiculos/formveiculo/FormVeiculo"
 import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo"
+import ListaViagens from './components/viagens/listarviagens/ListarViagens'
 
 function App() {
  
@@ -24,7 +25,8 @@ function App() {
         <Route path="/nossosmotoristas" element={<ListarVeiculos />} />
         <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
         <Route path="/editarveiculo/:id" element={<FormVeiculo />} />
-        <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
+        <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} /
+        <Route path="/viagens" element={<ListaViagens />} />>
       </Routes>
     <Footer />
     </BrowserRouter>
