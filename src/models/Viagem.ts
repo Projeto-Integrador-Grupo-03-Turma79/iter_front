@@ -10,7 +10,7 @@ export default interface Viagem{
     distancia: number;
     velMedia: number;
     data: string;
-    tempoViagem: string;
-    usuario: Usuario | null;
     veiculo: Veiculo | null;
+    usuario: Usuario | null;
+    tempoViagem : string;
 }

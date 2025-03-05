@@ -35,39 +35,37 @@ function Login() {
 
     return (
         <>
-            <div className="grid grid-cols-1 lg:grid-cols-2 
-                    h-screen place-items-center font-bold ">
-                <form className="flex justify-center items-center flex-col w-1/2 gap-4"
+            <div className="grid grid-cols-1 h-[80vh] w-screen place-items-center font-bold">
+                <form className=" mt-10 flex justify-center items-center flex-col w-1/4 gap-4" 
                     onSubmit={login}>
-                    <h2 className="text-slate-900 text-5xl ">Entrar</h2>
-                    <div className="flex flex-col w-full">
+                    <h2 className="text-slate-900 text-[54px] -mb-2">Entrar</h2>
+                    <div className="flex flex-col w-full text-[18px]">
                         <label htmlFor="usuario">Usuário</label>
                         <input
                             type="text"
                             id="usuario"
                             name="usuario"
                             placeholder="Usuario"
-                            className="border-2 border-slate-700 rounded p-2"
+                            className="border-2 border-slate-700 rounded-4xl p-2 mt-2"
                             value={usuarioLogin.usuario}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
                     <div className="flex flex-col w-full">
-                        <label htmlFor="senha">Senha</label>
+                        <label htmlFor="senha" className="flex flex-col w-full text-[18px]">Senha</label>
                         <input
                             type="password"
                             id="senha"
                             name="senha"
                             placeholder="Senha"
-                            className="border-2 border-slate-700 rounded p-2"
+                            className="border-2 border-slate-700 rounded-4xl p-2 mt-2"
                             value={usuarioLogin.senha}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
                     <button
                         type='submit'
-                        className="rounded bg-indigo-400 flex justify-center
-                                   hover:bg-indigo-900 text-white w-1/2 py-2">
+                        className="bg-black hover:bg-slate-900 flex justify-center rounded-3xl  text-white w-1/2 py-2">
                                     
                         {isLoading ? <RotatingLines
                             strokeColor="white"
@@ -78,13 +76,13 @@ function Login() {
                         /> :
                             <span>Entrar</span>
                         }
-                    </button>
+                    </button >
 
                     <hr className="border-slate-800 w-full" />
 
                     <p>
                         Ainda não tem uma conta?{' '}
-                        <Link to="/cadastrar" className="text-indigo-800 hover:underline">
+                        <Link to="/cadastrar" className="text-[#024a7a] hover:underline font-extrabold">
                             Cadastre-se
                         </Link>
                     </p>
