@@ -10,7 +10,7 @@ function CardVeiculo({veiculo}: CardVeiculosProps)  {
 
     return (
 
-        <div className="justify-center grid grid-rows-1 bg-slate-200 rounded-xl p-1 m-20">
+        <div className="justify-center items-center grid grid-rows-1 bg-slate-200 rounded-xl p-1 max-w-[25vw]">
           
             <div className="mt-2 flex flex-row items-center justify-between">
                 <img alt="" src={veiculo.fotoMotorista} 
