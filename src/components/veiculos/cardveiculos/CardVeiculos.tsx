@@ -10,31 +10,38 @@ function CardVeiculo({veiculo}: CardVeiculosProps)  {
 
     return (
 
-      <div className='flex flex-col rounded-3xl overflow-hidden justify-between'>
-      <header className='py-2 px-6 bg-slate-200 font-bold text-2xl'>
-          Informações
-      </header>
+        <div className="justify-center grid grid-rows-1 bg-slate-200 rounded-xl p-1 m-20">
+          
+            <div className="mt-2 flex flex-row items-center justify-between">
+                <img alt="" src={veiculo.fotoMotorista} 
+                    className="ml-6 mr-6 size-20 object-cover rounded-full bg-gray-50" />
+          
+                <div className="min-w-0 flex-auto p-5">
+                    <p className="text-[18px] font-semibold text-gray-900 text-start object-top">{veiculo.motorista}</p>
+                    <p className="mt-1 truncate text-xs/5 text-gray-500 text-start">
+                    {veiculo.marca}  {veiculo.modelo}  {veiculo.cor}</p>
+                    <p className="text-sm/6 text-[#090909] font-bold">{veiculo.placa}</p>
+                </div>
 
-      <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.motorista}</p>
-      <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.modelo}</p>
-      <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.marca}</p>
-      <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.cor}</p>
-      <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.placa}</p>
-      {/* <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.viagem}</p> */}
+            </div>
+            
+            <div className="items-center justify-between flex flex-row gap-10 mt-5 mb-3 w-full">
 
-      
-      <div className="flex">
-          <Link to='' 
-              className='w-full bg-slate-200 hover:bg-slate-100 rounded flex items-center justify-center py-2'>
-              <button>Editar</button>
-          </Link>
+            <Link to={`/editarveiculo/${veiculo.id}`} 
+                    className='text-slate-100 bg-black hover:bg-slate-700 w-25
+                    flex items-center justify-center rounded-3xl'>
+                    <button>Editar</button>
+                </Link>
 
-          <Link to='' className=' bg-slate-200 hover:bg-red-700 w-full flex items-center justify-center'>
-              <button>Deletar</button>
-          </Link>
-      </div>
+                <Link to={`/deletarveiculo/${veiculo.id}`} 
+                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-25
+                    flex items-center justify-center rounded-3xl'>
+                    <button>Deletar</button>
+                </Link>
+                
+            </div>
+        </div>
 
-  </div>
         
   )
 }

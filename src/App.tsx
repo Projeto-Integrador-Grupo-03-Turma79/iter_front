@@ -18,6 +18,7 @@ function App() {
     <AuthProvider>
     <BrowserRouter>
     <Navbar />
+    <div className="min-h-[80vh]">
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/footer" element={<Footer />} />
@@ -31,6 +32,7 @@ function App() {
         <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
         <Route path="/viagens" element={<ListaViagens />} />
       </Routes>
+      </div>
     <Footer />
     </BrowserRouter>
     </AuthProvider>
