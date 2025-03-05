@@ -10,6 +10,10 @@ import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo"
 import ListaViagens from './components/viagens/listarviagens/ListarViagens'
 import { AuthProvider } from './contexts/AuthContext'
 import Login from "./pages/login/Login"
+import FormViagem from "./components/viagens/formviagem/FormViagem"
+import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem"
+import ListarViagens from "./components/viagens/listarviagens/ListarViagens"
+
 
 function App() {
  
@@ -29,6 +33,10 @@ function App() {
           <Route path="/nossosmotoristas" element={<ListarVeiculos />} />
           <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
           <Route path="/editarveiculo/:id" element={<FormVeiculo />} />
+          <Route path="/viagens" element={<ListarViagens />} />
+          <Route path="/cadastrarviagem" element={<FormViagem />} />
+          <Route path="/editarviagem/:id" element={<FormViagem />} />
+          <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
           <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
           <Route path="/viagens" element={<ListaViagens />} />
         </Routes>

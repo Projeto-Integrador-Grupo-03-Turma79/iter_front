@@ -7,9 +7,9 @@ export default interface Viagem{
     origem: string;
     preco: number;
     hora: string;
-    data: string;
     distancia: number;
     velMedia: number;
+    data: string;
     veiculo: Veiculo | null;
     usuario: Usuario | null;
     tempoViagem : string;
