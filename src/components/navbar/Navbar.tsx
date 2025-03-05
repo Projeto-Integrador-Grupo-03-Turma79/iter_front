@@ -13,7 +13,7 @@ export default function Navbar()  {
                 <div className='flex gap-20 items-center justify-center'>
                     <Link to='/sobre' className='hover:underline'>Sobre Nós</Link>
                     <Link to='/login' className='hover:underline'>Login</Link>
-                    <Link to='/cadastro' className='hover:underline'>Cadastre-se</Link>
+                    <Link to='/cadastrar' className='hover:underline'>Cadastre-se</Link>
                     <a onClick={saida} href="https:/google.com" className='hover:underline'> Sair </a>
                 </div>
             </div>

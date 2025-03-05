@@ -9,7 +9,7 @@ import FormVeiculo from "./components/veiculos/formveiculo/FormVeiculo"
 import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo"
 import ListaViagens from './components/viagens/listarviagens/ListarViagens'
 import { AuthProvider } from './contexts/AuthContext'
-import { Route, Routes } from 'react-router-dom'
+import Login from "./pages/login/Login"
 
 function App() {
  
@@ -18,19 +18,20 @@ function App() {
     <AuthProvider>
     <BrowserRouter>
     <Navbar />
+    <div className="min-h-[80vh]">
       <Routes>
+        <Route path="/" element={<Home />} />        
         <Route path="/home" element={<Home />} />
-        <Route path="/footer" element={<Footer />} />
         <Route path="/sobre" element={<Sobre />} />
-        <Route path="/" element={<Home />} />          
         <Route path="/cadastrar" element={<Cadastro/>} />
-        <Route path="/logar" element={<Login/>} />
+        <Route path="/login" element={<Login/>} />
         <Route path="/nossosmotoristas" element={<ListarVeiculos />} />
         <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
         <Route path="/editarveiculo/:id" element={<FormVeiculo />} />
-        <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} /
-        <Route path="/viagens" element={<ListaViagens />} />>
+        <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
+        <Route path="/viagens" element={<ListaViagens />} />
       </Routes>
+    </div>
     <Footer />
     </BrowserRouter>
     </AuthProvider>
