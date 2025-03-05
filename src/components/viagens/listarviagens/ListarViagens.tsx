@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import CardViagens from "../cardviagens/CardViagens";
 import { useState, useContext, useEffect } from "react";
-import { DNA } from "react-loader-spinner";
 import Viagem from "../../../models/Viagem";
 import { buscar } from "../../../service/Service";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function ListaViagens() {
 
@@ -16,7 +16,7 @@ function ListaViagens() {
 
     async function buscarViagens() {
         try {
-            await buscar('/viagens', setViagens, {
+            await buscar('/viagem/all', setViagens, {
                 headers: {
                     Authorization: token,
                 },
@@ -41,29 +41,19 @@ function ListaViagens() {
     }, [viagens.length])
 
     return (
-        <>
-            {viagens.length === 0 && (
-                <DNA
-                    visible={true}
-                    height="200"
-                    width="200"
-                    ariaLabel="dna-loading"
-                    wrapperStyle={{}}
-                    wrapperClass="dna-wrapper mx-auto"
-                />
-            )}
-            <div className="flex justify-center w-full my-4">
-                <div className="container flex flex-col mx-2">
-                    <div className='container mx-auto my-4 
-                        grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'
-                    >
-                        {viagens.map((viagem) => (
-                            <CardViagens key={viagem.id} viagem={viagem} />
-                        ))}
-                    </div>
+        <div className="flex justify-center w-full my-4">
+            <div className="container flex flex-col mx-2">
+                <div className="container mx-auto my-4 
+                    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                >
+                    {viagens.map((viagem) => (
+                        <div key={viagem.id} className="self-start">
+                            <CardViagens viagem={viagem} />
+                        </div>
+                    ))}
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

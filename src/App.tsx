@@ -18,20 +18,20 @@ function App() {
     <AuthProvider>
     <BrowserRouter>
     <Navbar />
-    <div className="min-h-[80vh]">
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/footer" element={<Footer />} />
-        <Route path="/sobre" element={<Sobre />} />
-        <Route path="/" element={<Home />} />          
-        <Route path="/cadastrar" element={<Cadastro/>} />
-        <Route path="/logar" element={<Login/>} />
-        <Route path="/nossosmotoristas" element={<ListarVeiculos />} />
-        <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
-        <Route path="/editarveiculo/:id" element={<FormVeiculo />} />
-        <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
-        <Route path="/viagens" element={<ListaViagens />} />
-      </Routes>
+      <div className="min-h-[80vh]">
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/footer" element={<Footer />} />
+          <Route path="/sobre" element={<Sobre />} />
+          <Route path="/" element={<Home />} />          
+          <Route path="/cadastrar" element={<Cadastro/>} />
+          <Route path="/logar" element={<Login/>} />
+          <Route path="/nossosmotoristas" element={<ListarVeiculos />} />
+          <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
+          <Route path="/editarveiculo/:id" element={<FormVeiculo />} />
+          <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
+          <Route path="/viagens" element={<ListaViagens />} />
+        </Routes>
       </div>
     <Footer />
     </BrowserRouter>
