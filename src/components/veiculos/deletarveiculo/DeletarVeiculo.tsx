@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Veiculo from "../../../models/Veiculo"
 import { buscar, deletar } from "../../../service/Service"
+import { AuthContext } from "../../../contexts/AuthContext"
 
 function DeletarVeiculo() {
 
@@ -10,17 +11,32 @@ function DeletarVeiculo() {
     const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const token = usuario.token
+
+
     const { id } = useParams<{ id: string }>()
 
 
     async function buscarVeiculoPorId(id: string) {
         try {
-            await buscar(`/veiculo/${id}`, setVeiculo)
+            await buscar(`/veiculo/id/${id}`, setVeiculo, {
+                headers: { 'Authorization': token}
+            })
         } catch (error: any) {
-            alert("eror")
-            navigate("/")
+            if (error.toString().includes('403')) {
+                handleLogout()
+            }
         }
     }
+
+    useEffect(() => {
+        if (token === '') {
+            alert('Você precisa estar logado')
+            navigate('/')
+        }
+    }, [token])
+
 
     useEffect(() => {
         if (id !== undefined) {
@@ -33,11 +49,17 @@ function DeletarVeiculo() {
         setIsLoading(true)
 
         try {
-            await deletar(`/veiculo/${id}`)
+            await deletar(`/veiculo/deletar/${id}`, {
+                headers: {'Authorization': token}
+            })
             alert('Veículo apagado com sucesso')
 
         } catch (error: any) {
-            alert('Erro ao deletar o tema.')
+            if (error.toString().includes('403')) {
+                handleLogout()
+            }else {
+                alert('Erro ao deletar o veículo.')
+            }
         }
 
         setIsLoading(false)
@@ -50,41 +72,33 @@ function DeletarVeiculo() {
 
  
     return (
-   
+
         <div className='container w-1/3 mx-auto'>
-            
-            <h1 className='text-4xl text-center my-4'>Deletar Veículo</h1>
-            <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar o veículo a seguir?</p>
-            
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                
-                <header className='py-2 px-6 bg-slate-200 font-bold text-2xl'>
-                    Veículo
-                </header>
-               
-                <p className='p-8 text-3xl bg-slate-200 h-full'>{veiculo.motorista}</p>
-               
-                <div className="flex">
-                    
-                    <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2' onClick={retornar}>
-                        Não
-                    </button>
-                   
-                    <button 
-                        className='w-full bg-slate-200  hover:bg-slate-100 flex items-center justify-center'
-                                   onClick={deletarVeiculo}>
-                      
-                            Sim
-                        
-                    </button>
-
-                </div>
-
+        <h1 className='text-4xl text-center my-4'>Deletar Veículo</h1>
+        <p className='text-center font-semibold mb-4'>
+            Você tem certeza de que deseja apagar o veículo a seguir?</p>
+        <div className='flex flex-col border-slate-300 rounded-3xl overflow-hidden justify-between'>
+            <header
+                className='flex justify-center text-4xl p-2 text-white italic bg-[#003152]'>
+                {veiculo.modelo} 
+            </header>
+            <p className='flex justify-center p-8 text-3xl h-full bg-slate-200'>{veiculo.motorista}</p>
+            <div className="flex bg-gray-200">
+                <button
+                    className='w-full text-slate-100 bg-slate-800 hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[20px]'
+                    onClick={retornar}>
+                    Não
+                </button>
+                <button
+                    className='text-slate-100 bg-[#610202] hover:bg-red-800 w-full flex items-center justify-center py-2 m-3 rounded-[20px]'
+                    onClick={deletarVeiculo}>
+                        Sim
+                </button>
             </div>
-
         </div>
+    </div>
+
+   
   )
 }
 

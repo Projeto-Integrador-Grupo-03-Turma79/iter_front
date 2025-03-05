@@ -6,9 +6,11 @@ export default interface Viagem{
     destino: string;
     origem: string;
     preco: number;
+    hora: string;
+    data: string;
     distancia: number;
     velMedia: number;
-    data: string;
-    usuario: Usuario | null;
     veiculo: Veiculo | null;
+    usuario: Usuario | null;
+    tempoViagem : string;
 }

@@ -1,7 +1,8 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Veiculo from "../../../models/Veiculo";
 import { atualizar, buscar, cadastrar } from "../../../service/Service";
+import { AuthContext } from "../../../contexts/AuthContext";
 
 function FormVeiculo() {
 
@@ -10,17 +11,31 @@ function FormVeiculo() {
     const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo)
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
+    const { usuario, handleLogout } = useContext(AuthContext)
+    const token = usuario.token
+
     const { id } = useParams<{ id: string }>()
 
 
     async function buscarVeiculoPorId(id: string) {
         try {
-            await buscar(`/veiculo/id/${id}`, setVeiculo)
+            await buscar(`/veiculo/id/${id}`, setVeiculo,  {
+                headers: { Authorization: token }})
         } catch (error: any) {
-            alert("error")
-            navigate("/nossosmotoristas")
+            if (error.toString().includes('403')) {
+                handleLogout()
+            }
         }
     }
+
+    useEffect(() => {
+        if (token === '') {
+            alert('Você precisa estar logado!')
+            // navigate('/')
+        }
+    }, [token])
+
+
 
     useEffect(() => {
         if (id !== undefined) {
@@ -37,8 +52,10 @@ function FormVeiculo() {
     }
 
     function retornar() {
-        navigate("/veiculo")
+        navigate("/nossosmotoristas")
     }
+
+    console.log(veiculo)
 
     async function gerarNovoVeiculo(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
@@ -46,17 +63,29 @@ function FormVeiculo() {
 
         if (id !== undefined) {
             try {
-                await atualizar(`/veiculo/atualizar`, veiculo, setVeiculo)
+                await atualizar(`/veiculo/atualizar`, veiculo, setVeiculo, {
+                    headers: { 'Authorization': token }
+                })
                 alert("O Veículo foi atualizado com sucesso!")
             } catch (error: any) {
-                alert("Erro ao atualizar o veículo.")
+                if (error.toString().includes('403')) {
+                    handleLogout();
+                } else {
+                    alert('Erro ao atualizar o veículo.')
+                }
             }
         } else {
             try {
-                await cadastrar(`/veiculo/criar`, veiculo, setVeiculo)
+                await cadastrar(`/veiculo/criar`, veiculo, setVeiculo, {
+                    headers: { 'Authorization': token }
+                })
                 alert("O Veículo foi cadastrada com sucesso!")
             } catch (error: any) {
-                alert("Erro ao cadastrar o veículo.")
+                if (error.toString().includes('403')) {
+                    handleLogout();
+                } else {
+                    alert('Erro ao cadastrar o veículo.')
+                }
             }
         }
 
@@ -124,7 +153,7 @@ function FormVeiculo() {
                <label htmlFor="foto">Foto</label>
 
                <input type="text" placeholder="Foto"
-                      name='foto'className="border-2 border-slate-700 rounded p-2" value={veiculo.foto}
+                      name='fotoMotorista'className="border-2 border-slate-700 rounded p-2" value={veiculo.fotoMotorista}
                       onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
            </div>
 
