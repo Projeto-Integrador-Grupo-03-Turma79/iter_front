@@ -12,8 +12,10 @@ export default function Navbar()  {
             <div className="container flex justify-between text-2xl">
                 <div className='flex gap-20 items-center justify-center'>
                     <Link to='/sobre' className='hover:underline'>Sobre Nós</Link>
-                    <Link to='/login' className='hover:underline'>Login</Link>
+                    <Link to='/logar' className='hover:underline'>Login</Link>
                     <Link to='/cadastro' className='hover:underline'>Cadastre-se</Link>
+                    <Link to='/cadastrarViagem' className='hover:underline'>Cadastrar viagem</Link>
+                    <Link to='/viagens' className='hover:underline'>listar viagens</Link>
                     <a onClick={saida} href="https:/google.com" className='hover:underline'> Sair </a>
                 </div>
             </div>

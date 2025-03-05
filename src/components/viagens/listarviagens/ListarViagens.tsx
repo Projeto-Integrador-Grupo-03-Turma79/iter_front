@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import CardViagens from "../cardviagens/CardViagens";
 import { useState, useContext, useEffect } from "react";
-import { DNA } from "react-loader-spinner";
 import Viagem from "../../../models/Viagem";
 import { buscar } from "../../../service/Service";
+import { AuthContext } from "../../../contexts/AuthContext";
+import { DNA } from "react-loader-spinner";
 
 function ListaViagens() {
 
@@ -16,7 +17,7 @@ function ListaViagens() {
 
     async function buscarViagens() {
         try {
-            await buscar('/viagens', setViagens, {
+            await buscar('/viagem/all', setViagens, {
                 headers: {
                     Authorization: token,
                 },
