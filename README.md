@@ -4,6 +4,8 @@
 
 ![Image](https://github.com/user-attachments/assets/56801c92-7f22-4263-a564-9e07c9806798)
 
+> [!TIP]
+> A Iter foi criada para oferecer um transporte acessível, seguro e confortável para quem não possui veículo próprio. Com tarifas econômicas, garantimos que nossos passageiros cheguem aos seus compromissos com tranquilidade e comodidade. Além disso, geramos oportunidades de emprego para quem busca uma renda extra ou deseja trabalhar de forma autônoma, garantindo mais flexibilidade e independência financeira. Além de facilitar a mobilidade urbana.
 
 ## ⛏️ Ferramentas utilizadas
 
@@ -52,11 +54,6 @@
    </tr>
   </table>
 </div> 
-
-
-> [!TIP]
-> A Iter foi criada para oferecer um transporte acessível, seguro e confortável para quem não possui veículo próprio. Com tarifas econômicas, garantimos que nossos passageiros cheguem aos seus compromissos com tranquilidade e comodidade. Além disso, geramos oportunidades de emprego para quem busca uma renda extra ou deseja trabalhar de forma autônoma, garantindo mais flexibilidade e independência financeira. Além de facilitar a mobilidade urbana
-
 
 ## 🏁 Configuração e instalação do projeto
 
