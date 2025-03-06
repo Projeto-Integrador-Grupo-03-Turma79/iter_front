@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext"
 import Logo from "../../assets/logosIter.svg"
+import { ToastAlerta } from "../../utils/ToastAlerta";
 
 export default function Navbar() {
 
     const { usuario, handleLogout } = useContext(AuthContext);
 
     function saida(){
-        alert('Obrigado por usar o nosso sistema! Até a próxima viagem!!');
+        ToastAlerta('Obrigado por usar o nosso sistema! Até a próxima viagem!!', 'info');
     }
 
     return (
