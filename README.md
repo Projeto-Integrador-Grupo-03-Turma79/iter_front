@@ -87,7 +87,7 @@ o + enter
 
 ## Diagrama Entidade-Relacionamento (DER)
 
-![Image](https://github.com/user-attachments/assets/ee234f4d-0d55-455d-b21f-3b945584009c)
+![Image](https://github.com/user-attachments/assets/95aea107-d120-416e-8f74-964b21401768)
 
 ## 📫 Contribuindo para projeto Iter
 
