@@ -1,33 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import Home from "./pages/home/Home"
+import Footer from "./components/footer/Footer"
+import Sobre from "./pages/sobre/Sobre"
+import Cadastro from './pages/cadastro/Cadastro'
+import Navbar from "./components/navbar/Navbar"
+import ListarVeiculos from "./components/veiculos/listaveiculos/ListarVeiculos"
+import FormVeiculo from "./components/veiculos/formveiculo/FormVeiculo"
+import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo"
+import ListaViagens from './components/viagens/listarviagens/ListarViagens'
+import { AuthProvider } from './contexts/AuthContext'
+import Login from "./pages/login/Login"
+import FormViagem from "./components/viagens/formviagem/FormViagem"
+import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem"
+import ListarViagens from "./components/viagens/listarviagens/ListarViagens"
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify"
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <AuthProvider>
+      <ToastContainer />
+      <BrowserRouter>
+        <Navbar />
+          <div className="min-h-[80vh]">
+            <Routes>
+              <Route path="/home" element={<Home />} />
+              <Route path="/footer" element={<Footer />} />
+              <Route path="/sobre" element={<Sobre />} />
+              <Route path="/" element={<Home />} />          
+              <Route path="/cadastrar" element={<Cadastro/>} />
+              <Route path="/logar" element={<Login/>} />
+              <Route path="/nossosmotoristas" element={<ListarVeiculos />} />
+              <Route path="/cadastrarveiculo" element={<FormVeiculo />} />
+              <Route path="/editarveiculo/:id" element={<FormVeiculo />} />
+              <Route path="/viagens" element={<ListarViagens />} />
+              <Route path="/cadastrarviagem" element={<FormViagem />} />
+              <Route path="/editarviagem/:id" element={<FormViagem />} />
+              <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
+              <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
+              <Route path="/viagens" element={<ListaViagens />} />
+            </Routes>
+          </div>
+        <Footer />
+      </BrowserRouter>
+    </AuthProvider>
     </>
   )
 }

@@ -1,11 +1,11 @@
-import { toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 
 export function ToastAlerta(mensagem: string, tipo: string) {
     switch (tipo) {
             
         case 'sucesso':
             toast.success(mensagem, {
-                position: 'top-right',
+                position: 'top-center',
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -18,7 +18,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
 
         case 'erro':
             toast.error(mensagem, {
-                position: 'top-right',
+                position: 'top-center',
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -29,10 +29,24 @@ export function ToastAlerta(mensagem: string, tipo: string) {
             });
             break;
 
-            case 'info':
+        case 'aviso':
+            toast.warn(mensagem, {
+                position: "top-center",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+                });
+                break;
+
+        case 'info':
             default:
             toast.info(mensagem, {
-                position: 'top-right',
+                position: 'top-center',
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
