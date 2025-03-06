@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom"
 import Usuario from "../../models/Usuario"
 import { AuthContext } from "../../contexts/AuthContext"
 import { ToastAlerta } from "../../utils/ToastAlerta"
+import imagem from "../../assets/Black and Red Dynamic Car Dealer Presentation (1).png";
 
 function Home() {
 
@@ -66,9 +67,9 @@ function Home() {
 
                 <div className="flex justify-center">
                     <img
-                        src="https://i.imgur.com/Hq1oMm7.jpeg"
+                        src={imagem}
                         alt="Imagem Página Home"
-                        className="w-200"
+                        className="aspect-square object-cover w-175 rounded-4xl shadow-xl"
                     />
                 </div>
             </div>
