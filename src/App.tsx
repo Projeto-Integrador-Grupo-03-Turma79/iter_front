@@ -17,6 +17,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify"
 
 
+
 function App() {
  
   return (
@@ -46,7 +47,6 @@ function App() {
             </div>
           <Footer />
         </BrowserRouter>
-      <ToastContainer />
     </AuthProvider>
     </>
   )

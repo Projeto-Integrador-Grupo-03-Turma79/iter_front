@@ -4,6 +4,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Viagem from "../../../models/Viagem";
 import { buscar, atualizar, cadastrar } from "../../../service/Service"
 import Veiculo from "../../../models/Veiculo";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
 function FormViagem() {
@@ -60,7 +61,7 @@ function FormViagem() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado');
+            ToastAlerta('Você precisa estar logado!', 'aviso')
             navigate('/');
         }
     }, [token])
@@ -102,18 +103,18 @@ function FormViagem() {
                 await atualizar(`/viagem/atualizar`,viagem, setViagem,{
                     headers: { Authorization: token },
                 })
-                alert("A viagem foi atualizado com sucesso!.")
+                ToastAlerta("A viagem foi atualizado com sucesso!", "sucesso")
             } catch (error: any) {
-                alert("Erro ao atualizar o veículo.")
+                ToastAlerta("Erro ao atualizar a viagem.", "erro")
             }
         } else {
             try {
                 await cadastrar(`/viagem/criar`, viagem, setViagem,{
                     headers: { Authorization: token },
                 })
-                alert("A Viagem foi cadastrada com sucesso!")
+                ToastAlerta("A Viagem foi cadastrada com sucesso!", "sucesso")
             } catch (error: any) {
-                alert("Erro ao cadastrar a viagem.")
+                ToastAlerta("Erro ao cadastrar a viagem.", "erro")
             }
         }
 

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import Veiculo from "../../../models/Veiculo"
 import { buscar, deletar } from "../../../service/Service"
 import { AuthContext } from "../../../contexts/AuthContext"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function DeletarVeiculo() {
 
@@ -32,7 +33,7 @@ function DeletarVeiculo() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+            ToastAlerta('Você precisa estar logado!', 'aviso')
             navigate('/')
         }
     }, [token])
@@ -52,13 +53,13 @@ function DeletarVeiculo() {
             await deletar(`/veiculo/deletar/${id}`, {
                 headers: {'Authorization': token}
             })
-            alert('Veículo apagado com sucesso')
+            ToastAlerta("Veículo apagado com sucesso!", "sucesso")
 
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
             }else {
-                alert('Erro ao deletar o veículo.')
+                ToastAlerta("Erro ao deletar o veículo.", "erro")
             }
         }
 

@@ -5,6 +5,7 @@ import Viagem from "../../../models/Viagem";
 import { buscar } from "../../../service/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { DNA } from "react-loader-spinner";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
 function ListaViagens() {
@@ -33,7 +34,7 @@ function ListaViagens() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado')
+           ToastAlerta('Você precisa estar logado!', 'aviso')
             navigate('/');
         }
     }, [token])

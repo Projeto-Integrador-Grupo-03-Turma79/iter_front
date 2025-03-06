@@ -4,6 +4,7 @@ import CardVeiculo from "../cardveiculos/CardVeiculos"
 import { useContext, useEffect, useState } from "react"
 import Veiculo from "../../../models/Veiculo"
 import { buscar } from "../../../service/Service"
+import { ToastAlerta } from "../../../utils/ToastAlerta"
 
 function ListarVeiculos() {
 
@@ -28,7 +29,7 @@ function ListarVeiculos() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
+            ToastAlerta('Você precisa estar logado!', 'aviso')
             navigate('/')
         }
     }, [token])
