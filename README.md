@@ -85,9 +85,9 @@ o + enter
 
 ![Image](https://github.com/user-attachments/assets/ee234f4d-0d55-455d-b21f-3b945584009c)
 
-## 📫 Contribuindo para projeto RH Ivan
+## 📫 Contribuindo para projeto Iter
 
-Para contribuir com o projeto RH Ivan, siga estas etapas:
+Para contribuir com o projeto Iter, siga estas etapas:
 
 1. Bifurque este repositório.
 2. Crie um branch: `git checkout -b <nome_branch`.
