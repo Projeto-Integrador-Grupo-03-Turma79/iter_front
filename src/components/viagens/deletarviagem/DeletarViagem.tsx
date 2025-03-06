@@ -70,38 +70,31 @@ function DeletarViagem() {
         navigate("/viagens")
     }
     return (
-        <div className='container w-1/3 mx-auto'>
-            <h1 className='text-4xl text-center my-4'>Deletar Viagem</h1>
+        <div className='container w-1/3 mx-auto '>
+        <h1 className='text-4xl text-center my-4'> Deletar Viagem </h1>
+        <p className='text-center font-semibold mb-4'> Você tem certeza de que deseja apagar a viagem a seguir? </p>
+        <div className='flex flex-col border-slate-300 rounded-3xl overflow-hidden justify-between mt-10'>
+            <header
+                className='flex justify-center text-3xl p-2 text-white italic bg-[#003152] '>
+                Motorista da viagem: {viagem.veiculo?.motorista}
+            </header>
+            <p className='flex justify-center pt-6 pb-2 text-2xl h-full bg-slate-200'> Origem: {viagem.origem} </p>
+            <p className='flex justify-center pb-6 pt-2 text-2xl h-full bg-slate-200'> Destino: {viagem.destino}</p>
 
-            <p className='text-center font-semibold mb-4'>
-                Você tem certeza de que deseja apagar a viagem a seguir?
-            </p>
-
-            <div className='border flex flex-col rounded-2xl overflow-hidden justify-between'>
-                <header 
-                    className='py-2 px-6 bg-indigo-600 text-white font-bold text-2xl'>
-                    Viagem
-                </header>
-                <div className="p-4">
-                    <p className='text-xl h-full'>Título da Viagem</p>
-                    <p>Texto da Viagem</p>
-                </div>
-                <div className="flex">
-                <button 
-                        className='text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2' onClick={retornar}>
-                        Não
-                    </button>
-                   
-                    <button 
-                        className='w-full bg-slate-200  hover:bg-slate-100 flex items-center justify-center'
-                                   onClick={deletarViagem}>
-                      
-                            Sim
-                        
-                    </button>
-                </div>
+            <div className="flex bg-gray-200">
+                <button
+                    className='w-full text-slate-100 bg-slate-800 hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[20px]'
+                    onClick={retornar}>
+                    Não
+                </button>
+                <button
+                    className='text-slate-100 bg-[#610202] hover:bg-red-800 w-full flex items-center justify-center py-2 m-3 rounded-[20px]'
+                    onClick={deletarViagem}>
+                        Sim
+                </button>
             </div>
         </div>
+    </div>
     )
 }
 

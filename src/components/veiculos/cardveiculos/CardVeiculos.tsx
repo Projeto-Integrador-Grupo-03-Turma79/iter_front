@@ -10,7 +10,7 @@ function CardVeiculo({veiculo}: CardVeiculosProps)  {
 
     return (
 
-        <div className="justify-center items-center grid grid-rows-1 bg-slate-200 rounded-xl p-1 max-w-[25vw]">
+        <div className="justify-center items-center grid grid-rows-1 bg-slate-200 rounded-xl p-1 pb-5 max-w-[25vw]">
           
             <div className="mt-2 flex flex-row items-center justify-between">
                 <img alt="" src={veiculo.fotoMotorista} 
@@ -25,20 +25,17 @@ function CardVeiculo({veiculo}: CardVeiculosProps)  {
 
             </div>
             
-            <div className="items-center justify-between flex flex-row gap-10 mt-5 mb-3 w-full">
-
-            <Link to={`/editarveiculo/${veiculo.id}`} 
-                    className='text-slate-100 bg-black hover:bg-slate-700 w-25
-                    flex items-center justify-center rounded-3xl'>
+            <div className="flex justify-center items-center gap-20 mt-2">
+                <Link to={`/editarveiculo/${veiculo.id}`}
+                    className='text-slate-100 bg-black hover:bg-slate-700 w-35 h-8
+                    flex items-center justify-center rounded-4xl'>
                     <button>Editar</button>
                 </Link>
-
                 <Link to={`/deletarveiculo/${veiculo.id}`} 
-                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-25
-                    flex items-center justify-center rounded-3xl'>
+                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-35 h-8
+                    flex items-center justify-center rounded-4xl mr-2'>
                     <button>Deletar</button>
                 </Link>
-                
             </div>
         </div>
 

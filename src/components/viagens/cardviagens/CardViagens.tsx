@@ -15,7 +15,7 @@ function CardViagem({ viagem }: CardViagensProps) {
     return (
         <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-lg mx-auto my-4 p-4 border border-gray-300 transition-transform hover:scale-105">
 
-            <div className="flex items-center gap-4 pb-4 border-b border-gray-300">
+            <div className="flex flex-row items-center gap-4 pb-4 border-b border-gray-300">
                 <img
                     src={viagem.veiculo?.fotoMotorista}
                     className="h-16 w-16 object-cover rounded-full border-2 border-gray-400"
@@ -27,7 +27,7 @@ function CardViagem({ viagem }: CardViagensProps) {
                 </div>
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
-                    className="bg-white text-black font-extrabold h-8 w-8 rounded-3xl hover:bg-gray-200 transition"
+                    className="bg-slate-200 border-slate-300 shadow text-black font-extrabold h-12 w-12 rounded-3xl hover:bg-gray-200 transition object-[100 100 100]"
                 >
                     {isExpanded ? '-' : '+'}
                 </button>
@@ -49,15 +49,15 @@ function CardViagem({ viagem }: CardViagensProps) {
 
 
 
-            <div className="flex">
+            <div className="flex justify-center items-center gap-20 mt-2">
                 <Link to={`/editarviagem/${viagem.id}`}
-                    className='text-slate-100 bg-black hover:bg-slate-700 w-25
-                    flex items-center justify-center rounded-3xl mr-40'>
+                    className='text-slate-100 bg-black hover:bg-slate-700 w-35 h-8
+                    flex items-center justify-center rounded-4xl'>
                     <button>Editar</button>
                 </Link>
                 <Link to={`/deletarviagem/${viagem.id}`} 
-                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-25
-                    flex items-center justify-center rounded-3xl mr-2'>
+                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-35 h-8
+                    flex items-center justify-center rounded-4xl mr-2'>
                     <button>Deletar</button>
                 </Link>
             </div>
