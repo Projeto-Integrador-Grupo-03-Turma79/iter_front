@@ -1,16 +1,28 @@
-import { ChangeEvent } from "react";
-import { useNavigate } from "react-router-dom"; // Importando o hook de navegação
+import { ChangeEvent, useContext, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import Usuario from "../../models/Usuario"
+import { AuthContext } from "../../contexts/AuthContext"
 
 function Home() {
-    const navigate = useNavigate(); // Usando o hook para navegação
+
+    const navigate = useNavigate()
+
+    const [ usuarios, setUsuarios ] = useState<Usuario>({} as Usuario)
+
+    const { usuario } = useContext(AuthContext)
+    const token = usuario.token
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>): void {
         console.log(e.target.value);
     }
 
     function irParaLogin(): void {
-        
-        navigate("/login");
+        if (usuario.token) {
+            navigate("/viagens")
+        } else {
+            navigate("/logar")
+        }
+
     }
 
     return (
@@ -25,25 +37,25 @@ function Home() {
                             id="partida"
                             name="partida"
                             placeholder="Partida"
-                            className="border-2 border-slate-700 rounded p-2"
+                            className="border-2 border-slate-700 rounded-4xl p-2"
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
-                    <div className="flex flex-col w-full">
+                    <div className="flex flex-col w-full ">
                         <label htmlFor="destino">Destino:</label>
                         <input
                             id="destino"
                             name="destino"
                             placeholder="Destino"
-                            className="border-2 border-slate-700 rounded p-2"
+                            className="border-2 border-slate-700 rounded-4xl p-2"
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
                     <button
                         type="button" 
                         onClick={irParaLogin} 
-                        className="rounded 
-                        bg-[#003152]  flex justify-center hover:bg-indigo-900 text-white w-1/2 py-2"
+                        className="rounded-4xl 
+                        bg-black  flex justify-center hover:bg-slate-800 text-white w-1/2 py-2"
                     >
                         Ver
                     </button>

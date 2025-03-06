@@ -52,14 +52,14 @@ export default function Sobre() {
                         <img 
                             src={colaborador.imagem} 
                             alt={`Foto de ${colaborador.nome}`} 
-                            className="w-32 h-32 rounded-full object-cover border-2 border-[#700200]"
+                            className="w-32 h-32 rounded-full object-cover border-2 border-[#f1af09]"
                         />
                         <h2 className="text-xl font-semibold mt-4">{colaborador.nome}</h2>
                         <p className="text-gray-600">{colaborador.cargo}</p>
                         <a 
                             href={`https://github.com/${colaborador.github}`} 
                             target="_blank" 
-                            className="mt-2 text-[#c07512] hover:underline"
+                            className="mt-2 text-[#f1af09] hover:underline"
                         >
                             @{colaborador.github}
                         </a>

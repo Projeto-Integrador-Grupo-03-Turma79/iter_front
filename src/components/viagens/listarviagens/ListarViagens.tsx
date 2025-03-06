@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import CardViagens from "../cardviagens/CardViagens";
 import { useState, useContext, useEffect } from "react";
 import Viagem from "../../../models/Viagem";
@@ -54,9 +54,14 @@ function ListaViagens() {
                         </div>
                     ))}
                 </div>
+                <div className="flex-col flex justify-center items-center "> 
+                    <Link to={"/cadastrarviagem"} className=' min-w-[35vh] min-h-[10vh] text-2xl text-white font-bold bg-black hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[64px] shadow-2xl transition-transform hover:scale-102 '>
+                        <button>Cadastrar Viagem</button>
+                    </Link>
+                </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default ListaViagens;

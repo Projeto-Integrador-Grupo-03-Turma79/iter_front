@@ -11,6 +11,7 @@ interface CardViagensProps {
 function CardViagem({ viagem }: CardViagensProps) {
     const [isExpanded, setIsExpanded] = useState(false);
 
+
     return (
         <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-lg mx-auto my-4 p-4 border border-gray-300 transition-transform hover:scale-105">
 
@@ -24,22 +25,6 @@ function CardViagem({ viagem }: CardViagensProps) {
                     <h3 className="text-lg font-bold uppercase text-gray-800">{viagem.destino}</h3>
                     <p className="text-sm text-gray-600">Motorista: {viagem.veiculo?.motorista}</p>
                 </div>
-
-    return (
-        <div className="border-slate-900 border flex flex-col rounded overflow-hidden justify-between transition-all duration-300">
-            {/* Cabeçalho do card */}
-            <div className="flex w-full bg-indigo-400 py-2 px-4 items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <img
-                        src={viagem.veiculo?.fotoMotorista}
-                        className="h-12 w-12 rounded-full"
-                        alt={viagem.destino}
-                    />
-                    <h3 className="text-lg font-bold uppercase">{viagem.destino}</h3>
-                </div>
-
-                {/* Botão de Expandir */}
-
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}
                     className="bg-white text-black font-extrabold h-8 w-8 rounded-3xl hover:bg-gray-200 transition"
@@ -75,7 +60,9 @@ function CardViagem({ viagem }: CardViagensProps) {
                     flex items-center justify-center rounded-3xl mr-2'>
                     <button>Deletar</button>
                 </Link>
-
+            </div>
+        </div>
+    );
 }
 
-export default CardViagem;
+export default CardViagem
