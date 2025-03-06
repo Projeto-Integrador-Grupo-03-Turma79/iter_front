@@ -13,6 +13,9 @@ import Login from "./pages/login/Login"
 import FormViagem from "./components/viagens/formviagem/FormViagem"
 import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem"
 import ListarViagens from "./components/viagens/listarviagens/ListarViagens"
+import { ToastContainer } from "react-toastify"
+
+import 'react-toastify/dist/ReactToastify.css'
 
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
   return (
     <>
     <AuthProvider>
+    <ToastContainer />
     <BrowserRouter>
     <Navbar />
       <div className="min-h-[80vh]">

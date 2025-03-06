@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Veiculo from "../../../models/Veiculo";
 import { atualizar, buscar, cadastrar } from "../../../service/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormVeiculo() {
 
@@ -30,8 +31,8 @@ function FormVeiculo() {
 
     useEffect(() => {
         if (token === '') {
-            alert('Você precisa estar logado!')
-            // navigate('/')
+            ToastAlerta('Você precisa estar logado!', 'aviso')
+            navigate('/')
         }
     }, [token])
 
@@ -66,12 +67,12 @@ function FormVeiculo() {
                 await atualizar(`/veiculo/atualizar`, veiculo, setVeiculo, {
                     headers: { 'Authorization': token }
                 })
-                alert("O Veículo foi atualizado com sucesso!")
+                ToastAlerta("O Veículo foi atualizado com sucesso!", "sucesso")
             } catch (error: any) {
                 if (error.toString().includes('403')) {
                     handleLogout();
                 } else {
-                    alert('Erro ao atualizar o veículo.')
+                    ToastAlerta("Erro ao atualizar o veículo.", "erro")
                 }
             }
         } else {
@@ -79,12 +80,12 @@ function FormVeiculo() {
                 await cadastrar(`/veiculo/criar`, veiculo, setVeiculo, {
                     headers: { 'Authorization': token }
                 })
-                alert("O Veículo foi cadastrada com sucesso!")
+                ToastAlerta("O Veículo foi cadastrada com sucesso!", "sucesso")
             } catch (error: any) {
                 if (error.toString().includes('403')) {
                     handleLogout();
                 } else {
-                    alert('Erro ao cadastrar o veículo.')
+                    ToastAlerta("Erro ao cadastrar o veículo.", "erro")
                 }
             }
         }

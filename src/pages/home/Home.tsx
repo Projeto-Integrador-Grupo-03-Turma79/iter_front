@@ -2,6 +2,7 @@ import { ChangeEvent, useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import Usuario from "../../models/Usuario"
 import { AuthContext } from "../../contexts/AuthContext"
+import { ToastAlerta } from "../../utils/ToastAlerta"
 
 function Home() {
 
@@ -20,6 +21,7 @@ function Home() {
         if (usuario.token) {
             navigate("/viagens")
         } else {
+            ToastAlerta('Você precisa estar logado!', 'aviso')
             navigate("/logar")
         }
 
