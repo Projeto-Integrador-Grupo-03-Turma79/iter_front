@@ -35,6 +35,10 @@
        <a href="js" target="_blank"> <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/spring/spring-original.svg" alt="spring" width="40" height="40"/> </a>
        <br>Spring</br>
     </td>
+   <td align="center" width="96">
+       <a href="js" target="_blank"> <img width="48" height="48" src="https://img.icons8.com/color/48/tailwind_css.png" alt="tailwind_css"/> </a>
+       <br>Tailwind</br>
+    </td>
     <td align="center" width="96">
        <a href="js" target="_blank"> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg" alt="html" width="40" height="40"/> </a>
        <br>HTML5</br>
