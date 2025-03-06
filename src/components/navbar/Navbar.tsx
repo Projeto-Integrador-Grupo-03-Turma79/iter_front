@@ -1,15 +1,18 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthContext"
 import Logo from "../../assets/logosIter.svg"
 import { ToastAlerta } from "../../utils/ToastAlerta";
 
 export default function Navbar() {
 
+    const navigate = useNavigate();
     const { usuario, handleLogout } = useContext(AuthContext);
 
     function saida(){
-        ToastAlerta('Obrigado por usar o nosso sistema! Até a próxima viagem!!', 'info');
+        handleLogout()
+        ToastAlerta('O Usuário foi desconectado com sucesso!', 'info')
+        navigate('/')
     }
 
     return (
@@ -28,9 +31,8 @@ export default function Navbar() {
                         <div className='flex gap-10 items-center'>
                             <Link to='/viagens' className='hover:underline'>Encontrar Viagem</Link>
                             <Link to='/nossosmotoristas' className='hover:underline'>Nossos Motoristas</Link>
-                           
                             <Link to='/sobre' className='hover:underline'>Sobre</Link>
-                            <a onClick={saida} href="https:/google.com" className='hover:underline'> Sair </a>
+                            <Link to='/home' onClick={saida} className='hover:underline'>Sair</Link>
                         </div>
                     </div>
                 </> 
