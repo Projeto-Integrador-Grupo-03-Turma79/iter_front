@@ -218,7 +218,7 @@ function FormViagem() {
 
                     </select>
                 </div>
-                <button className="rounded-[64px] shadow-2xl text-white font-bold bg-black hover:bg-[#373737] w-1/2 py-2 mx-auto flex justify-center"
+                <button className="rounded-[64px] shadow-2xl text-white font-bold bg-black hover:bg-[#373737] w-1/2 py-2 mx-auto flex justify-center mb-7"
                     type="submit">
                     Cadastrar
                 </button>

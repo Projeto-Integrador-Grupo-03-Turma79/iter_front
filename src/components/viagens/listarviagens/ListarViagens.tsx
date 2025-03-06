@@ -46,7 +46,7 @@ function ListaViagens() {
         <div className="flex justify-center w-full my-4">
             <div className="container flex flex-col mx-2">
                 <div className="container mx-auto my-4 
-                    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
                 >
                     {viagens.map((viagem) => (
                         <div key={viagem.id} className="self-start">
@@ -55,6 +55,8 @@ function ListaViagens() {
                     ))}
                 </div>
                 <div className="flex-col flex justify-center items-center "> 
+
+                    <hr className=""/> 
                     <Link to={"/cadastrarviagem"} className=' min-w-[35vh] min-h-[10vh] text-2xl text-white font-bold bg-black hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[64px] shadow-2xl transition-transform hover:scale-102 '>
                         <button>Cadastrar Viagem</button>
                     </Link>

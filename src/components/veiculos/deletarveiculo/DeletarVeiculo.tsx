@@ -73,16 +73,15 @@ function DeletarVeiculo() {
  
     return (
 
-        <div className='container w-1/3 mx-auto'>
-        <h1 className='text-4xl text-center my-4'>Deletar Veículo</h1>
-        <p className='text-center font-semibold mb-4'>
-            Você tem certeza de que deseja apagar o veículo a seguir?</p>
-        <div className='flex flex-col border-slate-300 rounded-3xl overflow-hidden justify-between'>
+    <div className='container w-1/3 mx-auto'>
+        <h1 className='text-4xl text-center my-4'> Deletar Motorista </h1>
+        <p className='text-center font-semibold mb-4'> Você tem certeza de que deseja apagar o motorista a seguir? </p>
+        <div className='flex flex-col border-slate-300 rounded-3xl overflow-hidden justify-between mt-8'>
             <header
                 className='flex justify-center text-4xl p-2 text-white italic bg-[#003152]'>
-                {veiculo.modelo} 
+                Motorista: {veiculo.motorista}
             </header>
-            <p className='flex justify-center p-8 text-3xl h-full bg-slate-200'>{veiculo.motorista}</p>
+            <p className='flex justify-center p-8 text-3xl h-full bg-slate-200'>Carro relacionado: {veiculo.marca} {veiculo.modelo} {veiculo.cor}</p>
             <div className="flex bg-gray-200">
                 <button
                     className='w-full text-slate-100 bg-slate-800 hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[20px]'

@@ -53,7 +53,7 @@ function ListarVeiculos() {
 
             <div className="flex-col flex justify-center items-center "> 
                     <Link to={"/cadastrarveiculo"} className=' min-w-[35vh] min-h-[10vh] text-2xl text-white font-bold bg-black hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[64px] shadow-2xl transition-transform hover:scale-102 '>
-                        <button>Cadastrar Veículo</button>
+                        <button>Cadastrar Motorista</button>
                     </Link>
                 </div>
         </>
