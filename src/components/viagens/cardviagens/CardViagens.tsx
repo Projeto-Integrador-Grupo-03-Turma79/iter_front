@@ -40,7 +40,7 @@ function CardViagem({ viagem }: CardViagensProps) {
                 <p><strong>Destino:</strong> {viagem.destino}</p>
                 <p><strong>Preço:</strong> R$ {viagem.preco}</p>
                 {isExpanded && (
-                    <><p><strong>Data:</strong>{" "} {new Intl.DateTimeFormat(undefined, {dateStyle: "full",}).format(new Date(viagem.data))}
+                    <><p><strong>Data:</strong>{" "} {new Intl.DateTimeFormat("pt-BR", {dateStyle: "full",}).format(new Date(viagem.data + "T12:00:00"))}
                     . Às {viagem.hora}</p>
                     <p><strong>Distância:</strong> {viagem.distancia} km</p>
                     <p><strong>Velocidade Média:</strong> {viagem.velMedia} km/h</p><p><strong>Tempo Estimado:</strong> {viagem.tempoViagem}</p></>
