@@ -30,7 +30,7 @@ function Cadastro() {
   }, [usuario])
 
   function retornar(){
-    navigate('/login')
+    navigate('/logar')
   }
 
   function atualizarEstado(e: ChangeEvent<HTMLInputElement>){
@@ -147,7 +147,7 @@ function Cadastro() {
           <hr className="border-slate-800 w-full mt-1" />
             <p>
                 Já tem uma conta?{' '}
-                <Link to="/login" className="text-[#024a7a] hover:underline font-extrabold">
+                <Link to="/logar" className="text-[#024a7a] hover:underline font-extrabold">
                     Faça o login
                 </Link>
             </p>

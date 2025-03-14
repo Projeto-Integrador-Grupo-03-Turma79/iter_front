@@ -4,6 +4,7 @@ import Veiculo from "../../../models/Veiculo";
 import { atualizar, buscar, cadastrar } from "../../../service/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { RotatingLines, ThreeDots } from "react-loader-spinner";
 
 function FormVeiculo() {
 
@@ -160,7 +161,17 @@ function FormVeiculo() {
 
             <button className="rounded-[64px] shadow-2xl text-white font-bold bg-black hover:bg-[#373737] w-1/2 py-2 mx-auto flex justify-center" 
                 type="submit">
-            Cadastrar
+           {isLoading ?
+                        <RotatingLines
+                        strokeColor="white"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="24"
+                        visible={true}
+                    />  :
+                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+
+                    }
             </button>
 
         </form>
