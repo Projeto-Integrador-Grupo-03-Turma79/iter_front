@@ -1,4 +1,7 @@
+import { ReactNode } from "react";
+
 export default interface UsuarioLogin {
+    
     id: number;
     nome: string;
     usuario: string;
