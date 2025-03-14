@@ -5,6 +5,8 @@ import Viagem from "../../../models/Viagem";
 import { buscar, atualizar, cadastrar } from "../../../service/Service"
 import Veiculo from "../../../models/Veiculo";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { SelectEstado } from "./SelectEstado";
+import { SelectCidade } from "./SelectCidade";
 
 
 function FormViagem() {
@@ -12,17 +14,21 @@ function FormViagem() {
     const navigate = useNavigate();
 
     const [viagem, setViagem] = useState<Viagem>({
-        tempoViagem:"0h"
+        tempoViagem: "0h"
     } as Viagem)
     const [veiculos, setVeiculos] = useState<Veiculo[]>([])
 
-    const [veiculo, setVeiculo] = useState<Veiculo>({ id: 0, modelo: '', marca:'', cor:'', placa:'', motorista:'', fotoMotorista:'' })
+    const [veiculo, setVeiculo] = useState<Veiculo>({ id: 0, modelo: '', marca: '', cor: '', placa: '', motorista: '', fotoMotorista: '' })
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
     const { id } = useParams<{ id: string }>()
 
     const { usuario, handleLogout } = useContext(AuthContext)
     const token = usuario.token
+
+    const [selectedUf, setSelectedUf] = useState("");
+
+    console.log(selectedUf);
 
 
     async function buscarViagemPorId(id: string) {
@@ -108,8 +114,8 @@ function FormViagem() {
         setIsLoading(true)
 
         if (id !== undefined) {
-            try { 
-                await atualizar(`/viagem/atualizar`,viagem, setViagem,{
+            try {
+                await atualizar(`/viagem/atualizar`, viagem, setViagem, {
                     headers: { Authorization: token },
                 })
                 ToastAlerta("A viagem foi atualizado com sucesso!", "sucesso")
@@ -118,7 +124,7 @@ function FormViagem() {
             }
         } else {
             try {
-                await cadastrar(`/viagem/criar`, viagem, setViagem,{
+                await cadastrar(`/viagem/criar`, viagem, setViagem, {
                     headers: { Authorization: token },
                 })
                 ToastAlerta("A Viagem foi cadastrada com sucesso!", "sucesso")
@@ -141,23 +147,28 @@ function FormViagem() {
 
             <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoViagem}>
 
-                <div className="flex flex-col gap-2">
-
-                    <label htmlFor="origem">Origem</label>
-
-                    <input type="text" placeholder="Origem"
-                        name='origem' className="border-2 border-slate-700 rounded p-2" value={viagem.origem}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+            <div className="flex flex-col gap-2">
+                    <label htmlFor="origem">Origem da sua viagem</label>
+                    <SelectEstado onChange={setSelectedUf} />
+                    <SelectCidade
+                        uf={selectedUf}
+                        onChange={(cidadeSelecionada: string) => 
+                            atualizarEstado({ target: { name: "origem", value: cidadeSelecionada } } as ChangeEvent<HTMLInputElement>)
+                        }
+                    />
                 </div>
 
                 <div className="flex flex-col gap-2">
-
-                    <label htmlFor="destino">destino da sua viagem</label>
-
-                    <input type="text" placeholder="destino da viagem"
-                        name='destino' className="border-2 border-slate-700 rounded p-2" value={viagem.destino}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    <label htmlFor="destino">Destino da sua viagem</label>
+                    <SelectEstado onChange={setSelectedUf} />
+                    <SelectCidade
+                        uf={selectedUf}
+                        onChange={(cidadeSelecionada: string) => 
+                            atualizarEstado({ target: { name: "destino", value: cidadeSelecionada } } as ChangeEvent<HTMLInputElement>)
+                        }
+                    />
                 </div>
+
 
                 <div className="flex flex-col gap-2">
 
@@ -204,7 +215,7 @@ function FormViagem() {
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
                 </div>
 
-               
+
 
                 <div className="flex flex-col gap-2">
                     <p>Veiculo da Viagem</p>
