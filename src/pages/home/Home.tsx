@@ -4,6 +4,7 @@ import Usuario from "../../models/Usuario"
 import { AuthContext } from "../../contexts/AuthContext"
 import { ToastAlerta } from "../../utils/ToastAlerta"
 import imagem from "../../assets/Black and Red Dynamic Car Dealer Presentation (1).png";
+import CardDestino from "../../components/destino/CardDestino"
 
 function Home() {
 
@@ -27,6 +28,7 @@ function Home() {
         }
 
     }
+
 
     return (
         <>
@@ -73,6 +75,9 @@ function Home() {
                     />
                 </div>
             </div>
+            <div>
+          <CardDestino />
+        </div>
         </>
     );
 }
