@@ -20,7 +20,10 @@ function Cadastro() {
     nome: '',
     usuario: '',
     senha: '',
-    foto: ''
+    foto: '',
+    celular: ''
+    
+
   })
   
   useEffect(() => {
@@ -106,6 +109,18 @@ function Cadastro() {
               placeholder="Foto"
               className="border-2 border-slate-700 rounded-4xl p-2"
               value = {usuario.foto}
+             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+            />
+          </div>
+          <div className="flex flex-col w-full">
+            <label htmlFor="celular">Celular</label>
+            <input
+              type="text"
+              id="celular"
+              name="celular"
+              placeholder="celular"
+              className="border-2 border-slate-700 rounded-4xl p-2"
+              value = {usuario.celular}
              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
           </div>

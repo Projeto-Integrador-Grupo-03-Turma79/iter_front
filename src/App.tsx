@@ -4,6 +4,7 @@ import Footer from "./components/footer/Footer"
 import Sobre from "./pages/sobre/Sobre"
 import Cadastro from './pages/cadastro/Cadastro'
 import Navbar from "./components/navbar/Navbar"
+import MeuPerfil from "./pages/meuperfil/MeuPerfil"
 import ListarVeiculos from "./components/veiculos/listaveiculos/ListarVeiculos"
 import FormVeiculo from "./components/veiculos/formveiculo/FormVeiculo"
 import DeletarVeiculo from "./components/veiculos/deletarveiculo/DeletarVeiculo"
@@ -43,6 +44,7 @@ function App() {
               <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
               <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
               <Route path="/viagens" element={<ListaViagens />} />
+              <Route path="/meuperfil" element={<MeuPerfil />} />
             </Routes>
           </div>
         <Footer />
