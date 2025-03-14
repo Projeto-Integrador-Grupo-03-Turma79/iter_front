@@ -4,6 +4,7 @@ import Veiculo from "../../../models/Veiculo"
 import { buscar, deletar } from "../../../service/Service"
 import { AuthContext } from "../../../contexts/AuthContext"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
+import { RotatingLines } from "react-loader-spinner"
 
 function DeletarVeiculo() {
 
@@ -92,7 +93,16 @@ function DeletarVeiculo() {
                 <button
                     className='text-slate-100 bg-[#610202] hover:bg-red-800 w-full flex items-center justify-center py-2 m-3 rounded-[20px]'
                     onClick={deletarVeiculo}>
-                        Sim
+                       {isLoading ?
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
+                            /> :
+                            <span>Sim</span>
+                        }
                 </button>
             </div>
         </div>

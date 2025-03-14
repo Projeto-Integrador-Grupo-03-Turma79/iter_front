@@ -32,6 +32,7 @@ export default function Navbar() {
                             <Link to='/viagens' className='hover:underline'>Encontrar Viagem</Link>
                             <Link to='/nossosmotoristas' className='hover:underline'>Nossos Motoristas</Link>
                             <Link to='/sobre' className='hover:underline'>Sobre</Link>
+                            <Link to='/meuperfil' className='hover:underline'>Meu Perfil</Link>
                             <Link to='/home' onClick={saida} className='hover:underline'>Sair</Link>
                         </div>
                     </div>
