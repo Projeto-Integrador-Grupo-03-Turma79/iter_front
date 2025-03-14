@@ -5,6 +5,7 @@ import Viagem from "../../../models/Viagem";
 import { buscar, atualizar, cadastrar } from "../../../service/Service"
 import Veiculo from "../../../models/Veiculo";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { RotatingLines } from "react-loader-spinner";
 
 
 function FormViagem() {
@@ -221,7 +222,17 @@ function FormViagem() {
                 </div>
                 <button className="rounded-[64px] shadow-2xl text-white font-bold bg-black hover:bg-[#373737] w-1/2 py-2 mx-auto flex justify-center mb-7"
                     type="submit">
-                    Cadastrar
+                    {isLoading ?
+                        <RotatingLines
+                        strokeColor="white"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="24"
+                        visible={true}
+                    />  :
+                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+
+                    }
                 </button>
 
             </form>
