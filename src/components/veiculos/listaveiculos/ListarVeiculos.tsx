@@ -5,6 +5,8 @@ import { useContext, useEffect, useState } from "react"
 import Veiculo from "../../../models/Veiculo"
 import { buscar } from "../../../service/Service"
 import { ToastAlerta } from "../../../utils/ToastAlerta"
+import { ThreeDots } from "react-loader-spinner"
+import { TextAlignJustify } from "@phosphor-icons/react"
 
 function ListarVeiculos() {
 
@@ -43,6 +45,19 @@ function ListarVeiculos() {
     return (
 
         <>
+                {veiculos.length === 0 && (
+                    <ThreeDots
+                    visible={true}
+                    height="500"
+                    width="100"
+                    color="#000000"
+                    radius="9"
+                    ariaLabel="three-dots-loading"
+                    wrapperStyle={{}}
+                    wrapperClass="flex flex-col justify-center items-center align-middle "
+                    />)
+            }
+
               <div className="flex justify-center w-full my-4">
                 <div className="container flex flex-col">
                     <div className="grid grid-cols-1 md:grid-cols-2 

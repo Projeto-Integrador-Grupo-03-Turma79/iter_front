@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from "react";
 import Viagem from "../../../models/Viagem";
 import { buscar } from "../../../service/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
-import { DNA } from "react-loader-spinner";
+import { DNA, ThreeDots } from "react-loader-spinner";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 
@@ -14,20 +14,36 @@ function ListaViagens() {
 
     const [viagens, setViagens] = useState<Viagem[]>([]);
 
-    const { usuario, handleLogout } = useContext(AuthContext);
+    const { usuario, handleLogout, destino } = useContext(AuthContext);
     const token = usuario.token;
 
     async function buscarViagens() {
-        try {
-            await buscar('/viagem/all', setViagens, {
-                headers: {
-                    Authorization: token,
-                },
-            })
+        if ( destino == "" ) { 
+            try {
+                await buscar('/viagem/all', setViagens, {
+                    headers: {
+                        Authorization: token,
+                    },
+                })
+    
+            } catch (error: any) {
+                if (error.toString().includes('403')) {
+                    handleLogout()
+                }
+            }
+        } else { 
 
-        } catch (error: any) {
-            if (error.toString().includes('403')) {
-                handleLogout()
+            try {
+                await buscar(`/viagem/destino/${destino}`, setViagens, {
+                    headers: {
+                        Authorization: token,
+                    },
+                })
+    
+            } catch (error: any) {
+                if (error.toString().includes('403')) {
+                    handleLogout()
+                }
             }
         }
     }
@@ -44,11 +60,23 @@ function ListaViagens() {
     }, [viagens.length])
 
     return (
-        <div className="flex justify-center w-full my-4">
+        <>
+         {viagens.length === 0 && (
+                            <ThreeDots
+                            visible={true}
+                            height="500"
+                            width="100"
+                            color="#000000"
+                            radius="9"
+                            ariaLabel="three-dots-loading"
+                            wrapperStyle={{}}
+                            wrapperClass="flex flex-col justify-center items-center align-middle "
+                            />)
+                    }
+
+          <div className="flex justify-center w-full my-4">
             <div className="container flex flex-col mx-2">
-                <div className="container mx-auto my-4 
-                    grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-                >
+                <div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {viagens.map((viagem) => (
                         <div key={viagem.id} className="self-start">
                             <CardViagens viagem={viagem} />
@@ -63,7 +91,8 @@ function ListaViagens() {
                     </Link>
                 </div>
             </div>
-        </div>
+         </div>
+        </>
     )
 }
 

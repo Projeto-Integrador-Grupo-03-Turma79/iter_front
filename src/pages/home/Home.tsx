@@ -4,6 +4,9 @@ import Usuario from "../../models/Usuario"
 import { AuthContext } from "../../contexts/AuthContext"
 import { ToastAlerta } from "../../utils/ToastAlerta"
 import { GoogleMap, useJsApiLoader, DirectionsRenderer, Marker, LoadScript, StandaloneSearchBox } from '@react-google-maps/api'
+import imagem from "../../assets/Black and Red Dynamic Car Dealer Presentation (1).png";
+import CardDestino from "../../components/destino/CardDestino"
+
 
 function Home() {
 
@@ -11,26 +14,27 @@ function Home() {
 
     const [usuarios, setUsuarios] = useState<Usuario>({} as Usuario)
 
-    const { usuario } = useContext(AuthContext)
-    const token = usuario.token
+    const { usuario, setDestino } = useContext(AuthContext)
+    const token = usuario.token 
 
     const { isLoaded } = useJsApiLoader({
         googleMapsApiKey: import.meta.env.REACT_GOOGLE_MAP_API_KEY,
     })
 
     function atualizarEstado(e: ChangeEvent<HTMLInputElement>): void {
-        console.log(e.target.value);
+        setDestino(e.target.value);
     }
 
     function irParaLogin(): void {
         if (usuario.token) {
-            navigate("/viagens")
+            navigate('/viagens')
         } else {
             ToastAlerta('Você precisa estar logado!', 'aviso')
             navigate("/logar")
         }
 
     }
+
 
     return (
         <>
@@ -89,9 +93,11 @@ function Home() {
 
 
             </div>
+            <div>
+          <CardDestino />
+        </div>
         </>
     );
 }
-
 
 export default Home;
