@@ -14,7 +14,7 @@ import Login from "./pages/login/Login"
 import FormViagem from "./components/viagens/formviagem/FormViagem"
 import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem"
 import ListarViagens from "./components/viagens/listarviagens/ListarViagens"
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from "react-toastify"
 
 function App() {
