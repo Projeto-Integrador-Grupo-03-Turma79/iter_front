@@ -1,10 +1,18 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { AuthContext } from "../../contexts/AuthContext"
+import CardViagem from "../../components/viagens/cardviagens/CardViagens"
+import Veiculo from "../../models/Veiculo"
+
 
 function Perfil() {
+
 	const navigate = useNavigate()
+
+	const [viagens, setViagens] = useState([])
+	const [veiculo, setVeiculo] = useState([])
+
 
 	const { usuario } = useContext(AuthContext)
 
@@ -15,30 +23,52 @@ function Perfil() {
 		}
 	}, [usuario.token])
 
+
 	return (
-		<div className="flex justify-center mx-4">
-			<div className="container mx-auto my-4 rounded-2xl overflow-hidden">
-				<img
-					className="w-full h-100 object-cover border-b-8 border-white"
-					src="src/assets/Black and Red Dynamic Car Dealer Presentation (1).png"
-					alt="Capa do Perfil"
-				/>
 
-				<img
-					className="rounded-full w-56 mx-auto mt-[-2rem] border-8 border-white relative z-10"
-					src="https://cdn.pixabay.com/photo/2022/02/06/17/33/man-6997747_1280.jpg"
-					alt={`Foto de perfil de ${usuario.nome}`}
-				/>
+		<div className="flex justify-center font-std mb-10 pt-10 mx-30 w-7xl rounded-2xl bg-[#FFFDD0] font-normal leading-relaxed text-gray-900 shadow-2xl relative top-[50px]">
+			
+			<div className="flex flex-col md:flex-row gap-10">
+				<div className=" text-center mb-10 w-auto">
+					<img src={usuario.foto} alt="Profile Picture" className="rounded-full w-full h-10/12 mx-auto mb-4 border-4 border-white transition-transform duration-300 hover:scale-105 ring ring-gray-300" />
+				</div>
 
-				<div
-					className="relative mt-[-3rem] h-100 flex flex-col 
-                    bg-sky-800 text-white text-2xl font-mono items-center justify-center"
-				>
-					<p>Nome: {usuario.nome} </p>
-					<p>Email: {usuario.celular}</p>
-					<p>Email: {usuario.usuario}</p>
+				<div className="md:w-2/3 md:pl-8">
+					<h1 className="text-2xl font-bold mb-2">{usuario.nome}</h1>
+					<p className="text-gray-600 mb-6"></p>
+
+					<h2 className="text-xl font-semibold mb-4"></h2>
+					<p className="text-gray-700 mb-6">
+						Estep Bilişim / Software Developer
+					</p>
+
+					<h2 className="text-xl font-semibold mb-4">Informações de Contato</h2>
+					<ul className="space-y-2 text-gray-700">
+						<li className="flex items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-[#003152]" viewBox="0 0 20 20" fill="currentColor">
+								<path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+								<path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+							</svg>
+							{usuario.usuario}
+						</li>
+						<li className="flex items-center">
+							<svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 text-[#003152]" viewBox="0 0 20 20" fill="currentColor">
+								<path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+							</svg>
+							{(() => {
+								const celular = usuario.celular.toString()
+								const ddd = celular.substring(0, 2)
+								const celparte1 = celular.substring(2, 7)
+								const celparte2 = celular.substring(7)
+
+								return `(${ddd}) ${celparte1}-${celparte2}`
+							})()}
+						</li>
+						
+					</ul>
 				</div>
 			</div>
+
 		</div>
 	)
 }
