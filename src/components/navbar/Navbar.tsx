@@ -17,7 +17,6 @@ export default function Navbar() {
 
     return (
         <nav className='w-full bg-[#FFF] text-black flex justify-center shadow-[0_4px_6px_rgba(0,0,0,0.6)]'>
-
             {usuario.token ? ( 
                 <>
                     <div className="flex justify-end text-1xl ml-8">

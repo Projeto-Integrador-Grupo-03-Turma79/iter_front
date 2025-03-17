@@ -2,6 +2,7 @@ import { GithubLogo, InstagramLogo, LinkedinLogo } from "@phosphor-icons/react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo3 from "../../assets/Logo3.svg";
 
+
 export default function Footer() {
   return (
 
