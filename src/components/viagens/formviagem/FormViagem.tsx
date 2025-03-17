@@ -94,7 +94,7 @@ function FormViagem() {
 
         let novoValor = value;
         if (name === "data") {
-            const dataFormatada = new Date(value).toISOString().split("T")[0]; // Mantém YYYY-MM-DD sem fuso horário
+            const dataFormatada = new Date(value).toISOString().split("T")[0]
             novoValor = dataFormatada;
         }
         setViagem({
@@ -140,14 +140,15 @@ function FormViagem() {
 
     return (
 
-        <div className="container flex flex-col items-center justify-center mx-auto">
-            <h1 className="text-4xl text-center my-8">
-                {id === undefined ? 'Cadastrar Viagem' : 'Editar Viagem'}
-            </h1>
+        <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
+            <div className="bg-[#FFFDD0] p-10 rounded-lg shadow-lg w-[50%]">
+                <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                    {id === undefined ? 'Cadastrar Viagem' : 'Editar Veiculo'}
+                </h1>
 
             <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoViagem}>
 
-            <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2">
                     <label htmlFor="origem">Origem da sua viagem</label>
                     <SelectEstado onChange={setSelectedUf} />
                     <SelectCidade
@@ -163,91 +164,68 @@ function FormViagem() {
                     <SelectEstado onChange={setSelectedUf} />
                     <SelectCidade
                         uf={selectedUf}
-                        onChange={(cidadeSelecionada: string) => 
-                            atualizarEstado({ target: { name: "destino", value: cidadeSelecionada } } as ChangeEvent<HTMLInputElement>)
+                        onChange={(cidadeSelecionada: string) =>
+                            atualizarEstado({ target: { name: "destino", value: cidadeSelecionada} } as ChangeEvent<HTMLInputElement>)
                         }
                     />
                 </div>
 
-
-                <div className="flex flex-col gap-2">
-
-                    <label htmlFor="preco">Preço da sua viagem</label>
-
-                    <input type="text" placeholder="Preço da viagem"
-                        name='preco' className="border-2 border-slate-700 rounded p-2" value={viagem.preco}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                <div className="flex flex-col">
+                    <label htmlFor="valor">valor</label>
+                    <input type="text" placeholder="valor da viagem"
+                        name='preco' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" 
+                        value={viagem.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
                 </div>
 
-                <div className="flex flex-col gap-2">
-
+                <div className="flex flex-col">
                     <label htmlFor="hora">Horário da sua viagem</label>
-
                     <input type="text" placeholder="Horário da viagem"
-                        name='hora' className="border-2 border-slate-700 rounded p-2" value={viagem.hora}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                        name='hora' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" 
+                        value={viagem.hora} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
                 </div>
 
                 <div className="flex flex-col gap-2">
-
                     <label htmlFor="data">Data da sua viagem</label>
-
-                    <input type="date" placeholder="data da viagem"
-                        name='data' className="border-2 border-slate-700 rounded p-2" value={viagem.data}
+                    <input type="date" name='data'
+                        className="border-b-2 border-black focus:outline-none p-2 bg-transparent" value={viagem.data}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
                 </div>
 
                 <div className="flex flex-col gap-2">
-
                     <label htmlFor="distancia">Distância da sua viagem</label>
-
-                    <input type="text" placeholder="distancia da viagem"
-                        name='distancia' className="border-2 border-slate-700 rounded p-2" value={viagem.distancia}
+                    <input type="text" placeholder="Distância da viagem"
+                        name='distancia' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" value={viagem.distancia}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
-                </div>
+                </div>                
 
                 <div className="flex flex-col gap-2">
-
-                    <label htmlFor="velMedia">Velociadade média da sua viagem</label>
-
-                    <input type="text" placeholder="velocidade média da viagem"
-                        name='velMedia' className="border-2 border-slate-700 rounded p-2" value={viagem.velMedia}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
-                </div>
-
-
-
-                <div className="flex flex-col gap-2">
-                    <p>Veiculo da Viagem</p>
-                    <select name="veiculo" id="veiculo" className='border p-2 border-slate-800 rounded'
+                    <p>Veículo da Viagem</p>
+                    <select name="veiculo" id="veiculo" className='border-black focus:outline-none p-2 bg-transparent'
                         onChange={(e) => buscarVeiculoPorId(e.currentTarget.value)}
                     >
-                        <option defaultValue="" selected disabled>Selecione um Veiculo</option>
-
+                        <option defaultValue="" selected disabled>Selecione um Veículo</option>
                         {veiculos.map((veiculo) => (
-                            <>
-                                <option value={veiculo.id} >{veiculo.modelo}</option>
-                            </>
+                            <option key={veiculo.id} value={veiculo.id}>{veiculo.modelo}</option>
                         ))}
-
                     </select>
                 </div>
-                <button className="rounded-[64px] shadow-2xl text-white font-bold bg-black hover:bg-[#373737] w-1/2 py-2 mx-auto flex justify-center mb-7"
-                    type="submit">
-                    {isLoading ?
-                        <RotatingLines
-                        strokeColor="white"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        width="24"
-                        visible={true}
-                    />  :
-                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
 
-                    }
+                <button type="submit" className="mt-4 bg-[#003152] text-white py-2 px-6 rounded-full shadow-md hover:bg-[#22253d] transition">
+                    {isLoading ? (
+                        <RotatingLines
+                            strokeColor="white"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="24"
+                            visible={true}
+                        />
+                    ) : (
+                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                    )}
                 </button>
 
             </form>
+            </div>
         </div>
     );
 }
