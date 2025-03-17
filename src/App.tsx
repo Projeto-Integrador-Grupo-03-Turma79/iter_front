@@ -14,7 +14,7 @@ import Login from "./pages/login/Login"
 import FormViagem from "./components/viagens/formviagem/FormViagem"
 import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem"
 import ListarViagens from "./components/viagens/listarviagens/ListarViagens"
-import 'react-toastify/dist/ReactToastify.css';
+import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from "react-toastify"
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Navbar />
-        <div className="min-h-[80vh]">
+        <div className="min-h-[80vh] bg-[#EFEFEF]">
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/footer" element={<Footer />} />
@@ -43,7 +43,6 @@ function App() {
             <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
             <Route path="/viagens" element={<ListaViagens />} />
             <Route path="/meuperfil" element={<MeuPerfil />} />
-
           </Routes>
         </div>
         <Footer />
