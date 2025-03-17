@@ -16,7 +16,7 @@ export default function Navbar() {
     }
 
     return (
-        <nav className='w-full bg-[#003152] text-white flex justify-center py-4'>
+        <nav className='w-full bg-[#003152] text-white flex justify-center py-4 drop-shadow-lg'>
 
             {usuario.token ? ( 
                 <>

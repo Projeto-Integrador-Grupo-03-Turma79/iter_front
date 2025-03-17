@@ -42,6 +42,8 @@ function App() {
             <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
             <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
             <Route path="/viagens" element={<ListaViagens />} />
+            <Route path="/meuperfil" element={<MeuPerfil />} />
+
           </Routes>
         </div>
         <Footer />

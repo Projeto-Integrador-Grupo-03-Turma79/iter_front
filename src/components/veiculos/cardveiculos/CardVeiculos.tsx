@@ -1,44 +1,52 @@
 import { Link } from "react-router-dom"
 import Veiculo from "../../../models/Veiculo"
+import { useState } from "react";
 
 interface CardVeiculosProps{
   veiculo: Veiculo
 }
 
+
+
 function CardVeiculo({veiculo}: CardVeiculosProps)  {
 
+    const [isOpen, setIsOpen] = useState(false);
+    const [isExpanded,setIsExpanded] = useState(false);
 
     return (
 
-        <div className="justify-center items-center grid grid-rows-1 bg-slate-200 rounded-xl p-1 pb-5 max-w-[25vw]">
-          
-            <div className="mt-2 flex flex-row items-center justify-between">
-                <img alt="" src={veiculo.fotoMotorista} 
-                    className="ml-6 mr-6 size-20 object-cover rounded-full bg-gray-50" />
-          
-                <div className="min-w-0 flex-auto p-5">
-                    <p className="text-[18px] font-semibold text-gray-900 text-start object-top">{veiculo.motorista}</p>
-                    <p className="mt-1 truncate text-xs/5 text-gray-500 text-start">
-                    {veiculo.marca}  {veiculo.modelo}  {veiculo.cor}</p>
-                    <p className="text-sm/6 text-[#090909] font-bold">{veiculo.placa}</p>
-                </div>
-
+        <div className=" relative w-full max-w-sm bg-white  rounded-lg shadow-xl drop-shadow-xl dark:bg-[#eceaea] ">
+            <div className="flex justify-end px-4 pt-4">
+                <button onClick={() => setIsOpen(!isOpen)} className="inline-block p-1.5">
+                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                    </svg>
+                </button>
+                {isOpen && (
+                    <div className="absolute right-4 top-12 z-10 text-base list-none bg-[#003152] divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+                        <ul className="py-2">
+                            <li>
+                                <Link to={`/editarveiculo/${veiculo.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Editar Veículo</Link>
+                            </li>
+                            <li>
+                            <Link to={`/deletarveiculo/${veiculo.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Deletar Veículo</Link>
+                            </li>
+                        </ul>
+                    </div>
+                )}
             </div>
-            
-            <div className="flex justify-center items-center gap-20 mt-2">
-                <Link to={`/editarveiculo/${veiculo.id}`}
-                    className='text-slate-100 bg-black hover:bg-slate-700 w-35 h-8
-                    flex items-center justify-center rounded-4xl'>
-                    <button>Editar</button>
-                </Link>
-                <Link to={`/deletarveiculo/${veiculo.id}`} 
-                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-35 h-8
-                    flex items-center justify-center rounded-4xl mr-2'>
-                    <button>Deletar</button>
-                </Link>
+            <div className="flex flex-col items-center pb-10">
+                <img className="w-28 h-28 mb-5 rounded-full shadow-lg border-4 border-[#F1AF09] " src={veiculo.fotoMotorista} alt="Foto do motorista da viagem"/>
+                <h5 className="mb-1 text-xl font-medium text-gray-900 "><strong>{veiculo.motorista}</strong></h5>
+                <span className="text-gray-500 "><strong>{veiculo.marca} {veiculo.modelo} {veiculo.cor}</strong></span>
+                <span className="text-black text-[18px] pt-7"><strong>Placa</strong></span>
+                <div className="flex md:mt-2 ">
+                    <button onClick={() => setIsExpanded(!isExpanded)} className="inline-block text-black font-bold bg-[#b4b4b4] w-30  rounded-full text-[18px] p-1 py-2">
+                        {veiculo.placa}
+                    </button>   
+                </div>
             </div>
         </div>
-
         
   )
 }
