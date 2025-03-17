@@ -94,7 +94,7 @@ function FormViagem() {
 
         let novoValor = value;
         if (name === "data") {
-            const dataFormatada = new Date(value).toISOString().split("T")[0]; // Mantém YYYY-MM-DD sem fuso horário
+            const dataFormatada = new Date(value).toISOString().split("T")[0]
             novoValor = dataFormatada;
         }
         setViagem({

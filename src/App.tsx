@@ -25,7 +25,7 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Navbar />
-        <div className="min-h-[80vh]">
+        <div className="min-h-[80vh] bg-[#EFEFEF]">
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/footer" element={<Footer />} />
@@ -42,6 +42,7 @@ function App() {
             <Route path="/deletarviagem/:id" element={<DeletarViagem />} />
             <Route path="/deletarveiculo/:id" element={<DeletarVeiculo />} />
             <Route path="/viagens" element={<ListaViagens />} />
+            <Route path="/meuperfil" element={<MeuPerfil />} />
           </Routes>
         </div>
         <Footer />

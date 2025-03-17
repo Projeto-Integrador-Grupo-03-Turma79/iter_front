@@ -21,9 +21,7 @@ function Cadastro() {
     usuario: '',
     senha: '',
     foto: '',
-    celular: ''
-
-
+    celular: 0,
   })
 
   const [senha, setSenha] = useState(usuario.senha || "");
@@ -137,7 +135,7 @@ function Cadastro() {
           <div className="flex flex-col w-full">
             <label htmlFor="celular">Celular</label>
             <input
-              type="text"
+              type="number"
               id="celular"
               name="celular"
               placeholder="celular"
