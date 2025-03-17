@@ -3,7 +3,7 @@ import {GithubLogo, InstagramLogo, LinkedinLogo} from "@phosphor-icons/react";
 export default function Footer(){
     
     return(
-        <div className="flex justify-center bg-[#003152] text-white">
+        <div className="flex justify-center bg-white">
         <div className="container flex flex-col items-center py-4">
             <p className='text-xl font-bold'>
                 Iter - Grupo 03 | Copyright: 2025

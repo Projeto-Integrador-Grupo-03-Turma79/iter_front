@@ -89,7 +89,7 @@ function Home() {
             </div>
 
 
-            <div >
+            <div className="bg-[#EFEFEF]">
                 <CardDestino />
             </div>
         </>
