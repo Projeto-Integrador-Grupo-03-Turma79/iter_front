@@ -1,8 +1,7 @@
 import Viagem from "./Viagem";
 
 export default interface Usuario{
-    celular: string | number | readonly string[];
-    
+    celular: number;
     id:  number;
     nome: string;
     usuario: string;

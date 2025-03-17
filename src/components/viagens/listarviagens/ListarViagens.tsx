@@ -74,7 +74,7 @@ function ListaViagens() {
                             />)
                     }
 
-          <div className="flex justify-center w-full my-4">
+          <div className="flex justify-center w-full pt-10 pb-5 bg-[#003152]">
             <div className="container flex flex-col mx-2">
                 <div className="container mx-auto my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {viagens.map((viagem) => (
@@ -83,10 +83,8 @@ function ListaViagens() {
                         </div>
                     ))}
                 </div>
-                <div className="flex-col flex justify-center items-center "> 
-
-                    <hr className=""/> 
-                    <Link to={"/cadastrarviagem"} className=' min-w-[35vh] min-h-[10vh] text-2xl text-white font-bold bg-black hover:bg-slate-700 flex items-center justify-center py-2 m-3 rounded-[64px] shadow-2xl transition-transform hover:scale-102 '>
+                <div className="flex-col flex justify-center items-center mt-20 mb-15"> 
+                    <Link to={"/cadastrarviagem"} className=' min-w-[35vh] min-h-[10vh] text-2xl text-white font-bold bg-[#F1AF09] hover:bg-[#F1AF09]  flex items-center justify-center py-2 m-3 rounded-full shadow-2xl transition-transform hover:scale-108 '>
                         <button>Cadastrar Viagem</button>
                     </Link>
                 </div>
