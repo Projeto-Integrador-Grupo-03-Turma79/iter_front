@@ -25,7 +25,7 @@ function App() {
       <ToastContainer />
       <BrowserRouter>
         <Navbar />
-        <div className="min-h-[80vh] bg-[#EFEFEF]">
+        <div className="min-h-[80vh] bg-[#003152]">
           <Routes>
             <Route path="/home" element={<Home />} />
             <Route path="/footer" element={<Footer />} />

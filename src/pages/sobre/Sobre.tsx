@@ -43,7 +43,7 @@ function Sobre() {
     ];
 
     return (
-        <div className="flex flex-col items-center py-10 px-5">
+        <div className="flex flex-col items-center py-10 px-5 bg-[#efefef]">
             <h1 className="text-4xl font-bold pb-10">Sobre nós</h1>
 
             <article className="p-10">
