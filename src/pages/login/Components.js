@@ -92,11 +92,11 @@ overflow: hidden;
 transition: transform 0.6s ease-in-out;
 z-index: 100;
 ${props =>
- props.signinIn !== true ? `transform: translateX(-100%);` : null}
+    props.signinIn !== true ? `transform: translateX(-100%);` : null}
 `;
 
 export const Overlay = styled.div`
-background-color: #f1af09;
+background-color: #fff;
 background-repeat: no-repeat;
 background-size: cover;
 background-position: 0 0;
@@ -131,12 +131,24 @@ export const OverlayPanel = styled.div`
 
 export const LeftOverlayPanel = styled(OverlayPanel)`
   transform: translateX(-20%);
-  
+  border-radius: 0% 0% 90% 0%; 
+
+  @media (max-width: 768px) {
+    border-radius: 0% 50% 50% 0%; 
+  }
+
   ${props => props.signinIn !== true ? `transform: translateX(0);` : null}
 `;
 
 export const RightOverlayPanel = styled(OverlayPanel)`
     right: 0;
+    border-radius: 0% 0% 0% 90%; 
+
+  @media (max-width: 768px) {
+    border-radius: 50% 0% 0% 50%; 
+  }
+
+    
     transform: translateX(0);
     ${props => props.signinIn !== true ? `transform: translateX(20%);` : null}
 `;
