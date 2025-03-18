@@ -101,14 +101,14 @@ function Login() {
                             </Components.GhostButton>
                         </Components.LeftOverlayPanel>
 
-                        <Components.RightOverlayPanel signinIn={signIn}>
-                            <Components.Title>Novo por aqui?</Components.Title>
-                            <Components.Paragraph>
+                        <Components.RightOverlayPanel className="" signinIn={signIn}>
+                            <Components.Title >Novo por aqui?</Components.Title>
+                            <Components.Paragraph >
                                 Cadastre-se no nosso site e tenha um ótima experiência
                             </Components.Paragraph>
-                            <Components.GhostButton onClick={() => toggle(false)}>
+                            <Components.GhostButton onClick={() => toggle(false)} >
 
-                                Cadastre-se
+                               Cadastrar 
 
                             </Components.GhostButton>
                         </Components.RightOverlayPanel>

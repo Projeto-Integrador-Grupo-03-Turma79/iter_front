@@ -31,9 +31,8 @@ export default function Footer() {
                   <h2 className="text-1xl font-bold">Produtos</h2>
                       <li className="mb-1">
                       </li>
-                      <li>
+                      <li className="mb-4">
                       <Link to="/viagens" className="text-1xl hover:underline">Viajar</Link>
-                      <li className="mb-4"></li>
                       </li>
                       <li>
                       <Link to="/nossosmotoristas" className="text-1xl hover:underline">Dirigir</Link>
