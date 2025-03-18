@@ -21,6 +21,7 @@ function Cadastro() {
     senha: '',
     foto: '',
     celular: undefined,
+
   })
 
   const [senha, setSenha] = useState(usuario.senha || "");
