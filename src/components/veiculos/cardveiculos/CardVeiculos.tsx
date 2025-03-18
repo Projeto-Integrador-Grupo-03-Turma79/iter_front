@@ -26,10 +26,10 @@ function CardVeiculo({veiculo}: CardVeiculosProps)  {
                     <div className="absolute right-4 top-12 z-10 text-base list-none bg-[#003152] divide-y divide-gray-100 rounded-lg shadow-sm w-44">
                         <ul className="py-2">
                             <li>
-                                <Link to={`/editarveiculo/${veiculo.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Editar Veículo</Link>
+                                <Link to={`/editarveiculo/${veiculo.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Editar Motorista</Link>
                             </li>
                             <li>
-                            <Link to={`/deletarveiculo/${veiculo.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Deletar Veículo</Link>
+                            <Link to={`/deletarveiculo/${veiculo.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Deletar Motorista</Link>
                             </li>
                         </ul>
                     </div>

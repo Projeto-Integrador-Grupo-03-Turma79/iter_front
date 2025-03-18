@@ -26,7 +26,7 @@ function CardViagem({ viagem }: CardViagensProps) {
                                 <Link to={`/editarviagem/${viagem.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Editar Viagem</Link>
                             </li>
                             <li>
-                            <Link to={`/deletarviagem/${viagem.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Deletar Viagem</Link>
+                                <Link to={`/deletarviagem/${viagem.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Deletar Viagem</Link>
                             </li>
                         </ul>
                     </div>

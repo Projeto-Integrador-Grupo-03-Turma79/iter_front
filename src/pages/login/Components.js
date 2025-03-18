@@ -37,7 +37,7 @@ text-align: center;
 export const Title = styled.h1`
 display: flex;
 justify-content: start;
-font-size: 3em;
+font-size: 2em;
 font-weight: bold;
 margin: 200;
 `;
@@ -144,7 +144,7 @@ export const RightOverlayPanel = styled(OverlayPanel)`
 `;
 
 export const Paragraph = styled.p`
-font-size: 1.6em;
+font-size: 1.2em;
   font-weight: 100;
   line-height: 20px;
   letter-spacing: 0.5px;
