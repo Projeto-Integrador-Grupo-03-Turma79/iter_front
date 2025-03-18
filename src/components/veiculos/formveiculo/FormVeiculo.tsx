@@ -4,6 +4,7 @@ import Veiculo from "../../../models/Veiculo";
 import { atualizar, buscar, cadastrar } from "../../../service/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
+import { RotatingLines, ThreeDots } from "react-loader-spinner";
 
 function FormVeiculo() {
 
@@ -20,8 +21,9 @@ function FormVeiculo() {
 
     async function buscarVeiculoPorId(id: string) {
         try {
-            await buscar(`/veiculo/id/${id}`, setVeiculo,  {
-                headers: { Authorization: token }})
+            await buscar(`/veiculo/id/${id}`, setVeiculo, {
+                headers: { Authorization: token }
+            })
         } catch (error: any) {
             if (error.toString().includes('403')) {
                 handleLogout()
@@ -90,82 +92,82 @@ function FormVeiculo() {
             }
         }
 
-    setIsLoading(false)
-    retornar()
-}
+        setIsLoading(false)
+        retornar()
+    }
 
     return (
 
-        <div className="container flex flex-col items-center justify-center mx-auto">
-        <h1 className="text-4xl text-center my-8">
-        {id === undefined ? 'Cadastrar Veiculo' : 'Editar Veiculo'}
-        </h1>
+        <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
+            <div className="bg-[#FFFDD0] p-10 rounded-lg shadow-lg w-[50%]">
+                <h1 className="text-4xl font-bold text-gray-900 mb-6">
+                    {id === undefined ? 'Cadastrar Motorista' : 'Editar Veiculo'}
+                </h1>
 
-        <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoVeiculo}>
+                <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoVeiculo}>
 
-        <div className="flex flex-col gap-2">
-               
-               <label htmlFor="motorista">Motorista</label>
+                    <div className="flex flex-col">
+                        <label htmlFor="motorista" className="text-gray-800">Nome do motorista</label>
+                        <input type="text" name="motorista" placeholder="Nome do motorista"
+                            className="border-b-2 border-gray-700 focus:outline-none p-2 bg-transparent"
+                            value={veiculo.motorista} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
 
-               <input type="text" placeholder="Motorista"
-                      name='motorista'className="border-2 border-slate-700 rounded p-2" value={veiculo.motorista}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
-           </div>
-           
-        <div className="flex flex-col gap-2">
-               
-               <label htmlFor="modelo">Modelo do seu veículo</label>
+                    <div className="flex flex-col gap-2">
 
-               <input type="text" placeholder="Modelo do Carro"
-                      name='modelo'className="border-2 border-slate-700 rounded p-2" value={veiculo.modelo}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
-           </div>
+                        <label htmlFor="foto">Foto</label>
 
+                        <input type="text" placeholder="Foto"
+                            name='fotoMotorista' className="border-2 border-slate-700 rounded p-2" value={veiculo.fotoMotorista}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
 
-           <div className="flex flex-col gap-2">
-               
-               <label htmlFor="marca">Marca do seu veículo</label>
+                    <div className="flex flex-col">
+                        <label htmlFor="modelo" className="text-gray-800">Modelo do seu veículo</label>
+                        <input type="text" name="modelo" placeholder="Modelo do veículo"
+                            className="border-b-2 border-black focus:outline-none p-2 bg-transparent"
+                            value={veiculo.modelo} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
 
-               <input type="text" placeholder="Marca do Carro"
-                      name='marca'className="border-2 border-slate-700 rounded p-2" value={veiculo.marca}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
-           </div>
+                    <div className="flex flex-col">
+                        <label htmlFor="marca" className="text-gray-800">Marca do seu veículo</label>
+                        <input type="text" name="marca" placeholder="Marca do veículo"
+                            className="border-b-2 border-gray-700 focus:outline-none p-2 bg-transparent"
+                            value={veiculo.marca} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
 
-           <div className="flex flex-col gap-2">
-               
-               <label htmlFor="cor">Cor do seu veículo</label>
+                    <div className="flex flex-col">
+                        <label htmlFor="placa" className="text-gray-800">Placa</label>
+                        <input type="text" name="placa" placeholder="Placa"
+                            className="border-b-2 border-gray-700 focus:outline-none p-2 bg-transparent"
+                            value={veiculo.placa} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
 
-               <input type="text" placeholder="Cor do Carro"
-                      name='cor'className="border-2 border-slate-700 rounded p-2" value={veiculo.cor}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
-           </div>
+                    <div className="flex flex-col">
+                        <label htmlFor="cor" className="text-gray-800">Cor do veículo</label>
+                        <input type="text" name="cor" placeholder="Cor do veículo"
+                            className="border-b-2 border-gray-700 focus:outline-none p-2 bg-transparent"
+                            value={veiculo.cor} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
 
-           <div className="flex flex-col gap-2">
-               
-               <label htmlFor="placa">Placa do seu veículo</label>
+                    <button type="submit" className="mt-4 bg-[#003152] text-white py-2 px-6 rounded-full shadow-md hover:bg-[#22253d] transition">
+                        {isLoading ?
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
+                            /> :
+                            <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
 
-               <input type="text" placeholder="Placa do Carro"
-                      name='placa'className="border-2 border-slate-700 rounded p-2" value={veiculo.placa}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
-           </div>
+                        }
+                    </button>
 
-           <div className="flex flex-col gap-2">
-               
-               <label htmlFor="foto">Foto</label>
-
-               <input type="text" placeholder="Foto"
-                      name='fotoMotorista'className="border-2 border-slate-700 rounded p-2" value={veiculo.fotoMotorista}
-                      onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}/>
-           </div>
-
-            <button className="rounded-[64px] shadow-2xl text-white font-bold bg-black hover:bg-[#373737] w-1/2 py-2 mx-auto flex justify-center" 
-                type="submit">
-            Cadastrar
-            </button>
-
-        </form>
-    </div>
-  )
+                </form>
+            </div>
+        </div>
+    )
 }
 
 export default FormVeiculo

@@ -1,67 +1,58 @@
 
 import { Link } from 'react-router-dom'
 import Viagem from '../../../models/Viagem'
-import Veiculo from '../../../models/Veiculo'
 import { useState } from 'react';
-
 interface CardViagensProps {
     viagem: Viagem;
 }
 
 function CardViagem({ viagem }: CardViagensProps) {
-    const [isExpanded, setIsExpanded] = useState(false);
-
+    const [isOpen, setIsOpen] = useState(false);
+    const [isExpanded,setIsExpanded] = useState(false);
 
     return (
-        <div className="bg-white shadow-lg rounded-lg overflow-hidden max-w-lg mx-auto my-4 p-4 border border-gray-300 transition-transform hover:scale-105">
 
-            <div className="flex flex-row items-center gap-4 pb-4 border-b border-gray-300">
-                <img
-                    src={viagem.veiculo?.fotoMotorista}
-                    className="h-16 w-16 object-cover rounded-full border-2 border-gray-400"
-                    alt={viagem.destino}
-                />
-                <div>
-                    <h3 className="text-lg font-bold uppercase text-gray-800">{viagem.destino}</h3>
-                    <p className="text-sm text-gray-600">Motorista: {viagem.veiculo?.motorista}</p>
-                </div>
-                <button
-                    onClick={() => setIsExpanded(!isExpanded)}
-                    className="bg-slate-200 border-slate-300 shadow text-black font-extrabold h-12 w-12 rounded-3xl hover:bg-gray-200 transition object-[100 100 100]"
-                >
-                    {isExpanded ? '-' : '+'}
+        <div className=" relative w-full max-w-sm bg-white  rounded-lg shadow-xl drop-shadow-xl dark:bg-[#eceaea] ">
+            <div className="flex justify-end px-4 pt-4">
+                <button onClick={() => setIsOpen(!isOpen)} className="inline-block p-1.5">
+                    <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
+                        <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                    </svg>
                 </button>
-            </div>
-            
-
-
-            <div className="py-4 px-2 text-gray-700 space-y-2">
-                <p><strong>Origem:</strong> {viagem.origem}</p>
-                <p><strong>Destino:</strong> {viagem.destino}</p>
-                <p><strong>Preço:</strong> R$ {viagem.preco}</p>
-                {isExpanded && (
-                    <><p><strong>Data:</strong>{" "} {new Intl.DateTimeFormat(undefined, {dateStyle: "full",}).format(new Date(viagem.data))}
-                    . Às {viagem.hora}</p>
-                    <p><strong>Distância:</strong> {viagem.distancia} km</p>
-                    <p><strong>Velocidade Média:</strong> {viagem.velMedia} km/h</p><p><strong>Tempo Estimado:</strong> {viagem.tempoViagem}</p></>
+                {isOpen && (
+                    <div className="absolute right-4 top-12 z-10 text-base list-none bg-[#003152] divide-y divide-gray-100 rounded-lg shadow-sm w-44">
+                        <ul className="py-2">
+                            <li>
+                                <Link to={`/editarviagem/${viagem.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Editar Viagem</Link>
+                            </li>
+                            <li>
+                            <Link to={`/deletarviagem/${viagem.id}`} className="block px-4 py-2 text-sm text-gray-700 hover:bg-[#41637c] dark:text-gray-200 dark:hover:text-white">Deletar Viagem</Link>
+                            </li>
+                        </ul>
+                    </div>
                 )}
             </div>
-
-
-
-            <div className="flex justify-center items-center gap-20 mt-2">
-                <Link to={`/editarviagem/${viagem.id}`}
-                    className='text-slate-100 bg-black hover:bg-slate-700 w-35 h-8
-                    flex items-center justify-center rounded-4xl'>
-                    <button>Editar</button>
-                </Link>
-                <Link to={`/deletarviagem/${viagem.id}`} 
-                    className='text-slate-100 bg-red-400 hover:bg-red-700 w-35 h-8
-                    flex items-center justify-center rounded-4xl mr-2'>
-                    <button>Deletar</button>
-                </Link>
+            <div className="flex flex-col items-center pb-10">
+                <img className="w-28 h-28 mb-5 rounded-full shadow-lg border-4 border-[#F1AF09] " src={viagem.veiculo.fotoMotorista} alt="Foto do motorista da viagem"/>
+                <h5 className="mb-1 text-xl font-medium text-gray-900  pb-2"><strong>Motorista:</strong> {viagem.veiculo.motorista} </h5>
+                <span className="text-gray-500 "><strong>Origem:</strong> {viagem.origem}</span>
+                <span className=" text-gray-500 "><strong>Destino:</strong> {viagem.destino}</span>
+                <span className="text-gray-500 "><strong>Carro:</strong> {viagem.veiculo.marca} {viagem.veiculo.modelo} {viagem.veiculo.cor}</span>
+                {isExpanded && (
+                    <><p className=" text-gray-500  pt-3"><strong>Data:</strong>{" "} {new Intl.DateTimeFormat("pt-BR", {dateStyle: "short",}).format(new Date(viagem.data + "T12:00:00"))}
+                    . Às {viagem.hora}</p>
+                    <p className=" text-gray-500 "><strong>Distância:</strong> {viagem.distancia} km</p>
+                    <p className=" text-gray-500 "><strong>Tempo Estimado:</strong> {viagem.tempoViagem}</p>
+                    </>
+                )}
+                <div className="flex mt-4 md:mt-6 ">
+                    <button onClick={() => setIsExpanded(!isExpanded)} className="inline-block text-black font-bold  bg-[#F1AF09] w-25 rounded-full text-2xl p-2">
+                        {isExpanded ? '-' : '+'}
+                    </button>   
+                </div>
             </div>
         </div>
+
     );
 }
 
