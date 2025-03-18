@@ -6,7 +6,6 @@ box-shadow: #003152;
 position: relative;
 overflow: hidden;
 width: 100%;
-max-width: 100%;
 min-height: 100%;
 
 `;
