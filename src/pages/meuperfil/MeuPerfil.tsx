@@ -27,15 +27,15 @@ function Perfil() {
 
 	return (
 
-		<div className="flex justify-center font-std mb-10 pt-10 mx-30 w-7xl rounded-2xl bg-white font-normal leading-relaxed text-gray-900 shadow-2xl relative top-[50px]">
+		<div className="sm:max-w-full md:max-xl:flex max-w-[80vw] flex justify-center font-std mb-10 pt-10 pb-10 mx-30 xl:w-7xl rounded-2xl bg-white font-normal leading-relaxed text-gray-900 shadow-2xl relative top-[50px]">
 			
 			<div className="flex flex-col md:flex-row gap-8">
-				<div className=" text-center mb-10 w-auto">
+				<div className="md:w-1/3 text-center mb-10 w-auto md:mb-0">
 					<img src={usuario.foto} alt="Profile Picture" className="rounded-full w-full h-10/12 mx-auto mb-4 border-4 border-[#F1AF09] transition-transform duration-300 hover:scale-105 ring ring-gray-300" />
 				</div>
 
 				<div className="md:w-2/3 md:pl-8 ">
-					<h1 className="text-2xl font-bold mb-8 pt-10 text-[#003152]">{usuario.nome}</h1>
+					<h1 className="xl: text-2xl font-bold text-[#003152]">{usuario.nome}</h1>
 
 					<h2 className="text-xl font-semibold mt-8 mb-2 text-[#003152]">Informações de Contato</h2>
 					<ul className="space-y-2 text-grey-700">
