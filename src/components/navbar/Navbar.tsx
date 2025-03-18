@@ -53,6 +53,7 @@ export default function Navbar() {
             </svg>
           </button>
 
+
           <div
             className={`${
               isMenuOpen ? "block" : "hidden"

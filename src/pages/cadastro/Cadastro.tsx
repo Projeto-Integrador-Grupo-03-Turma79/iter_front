@@ -20,7 +20,8 @@ function Cadastro() {
     usuario: '',
     senha: '',
     foto: '',
-    celular: '',
+    celular: undefined,
+
   })
 
   const [senha, setSenha] = useState(usuario.senha || "");
@@ -91,10 +92,10 @@ function Cadastro() {
   return (
     <>
       <div className="grid grid-cols-1 h-[80vh] place-items-center font-bold">
-        <form className='flex justify-center items-center flex-col w-1/4 gap-3'
+        <form className='flex justify-center items-center flex-col w-2/4 gap-4'
           onSubmit={cadastrarNovoUsuario}>
-          <h2 className='text-slate-900 text-5xl mb-1'>Cadastrar</h2>
-          <div className="flex flex-col w-full relative z-0 mb-5">
+          <h2 className='text-slate-900 lg:text-[4vw] text-[9vw] mb-1'>Cadastrar</h2>
+          <div className="flex flex-col w-full lg:w-[25vw] relative z-0 mb-5">
             <input className="block py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
 
             type="text" 
@@ -106,8 +107,8 @@ function Cadastro() {
             />
             <label htmlFor="nome" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-600 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nome do usuário</label>
           </div>
-          <div className="flex flex-col w-full relative z-0 mb-5">
-            <input className="block py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
+          <div className="flex flex-col w-full relative lg:w-[25vw] z-0 mb-5">
+            <input className="block py-2.5 lg:py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
 
             type="text" 
             name="usuario" 
@@ -119,8 +120,8 @@ function Cadastro() {
             <label htmlFor="usuario" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-600 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email do usuário</label>
           </div>
 
-          <div className="flex flex-col w-full relative z-0 mb-5">
-            <input className="block py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
+          <div className="flex flex-col w-full relative lg:w-[25vw] z-0 mb-5">
+            <input className="block py-2.5 lg:py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
 
             type="text" 
             name="foto" 
@@ -132,8 +133,8 @@ function Cadastro() {
             <label htmlFor="foto" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-600 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Foto</label>
           </div>
 
-          <div className="flex flex-col w-full relative z-0 mb-5">
-            <input className="block py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
+          <div className="flex flex-col w-full relative lg:w-[25vw] z-0 mb-5">
+            <input className="block py-2.5 lg:py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
 
             type="text" 
             name="celular" 
@@ -145,13 +146,13 @@ function Cadastro() {
             <label htmlFor="celular" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-600 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular</label>
           </div>
           
-          <div className="flex flex-col w-full relative z-0 mb-5">
+          <div className="flex flex-col w-full relative lg:w-[25vw] z-0 mb-5">
             <input
               type="password"
               id="senha"
               name="senha"
               placeholder=" "
-              className="block py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
+              className="block py-2.5 lg:py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
               value={senha}
               onChange={handleSenhaChange}
               onFocus={() => setPopoverVisible(true)}
@@ -187,8 +188,8 @@ function Cadastro() {
             )}
           </div>
 
-          <div className="flex flex-col w-full relative z-0 mb-5">
-            <input className="block py-3.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
+          <div className="flex flex-col w-full relative lg:w-[25vw] z-0 mb-5">
+            <input className="py-2.5 lg:py-3.5 px-0 w-full lg:w-[25vw] text-sm bg-transparent border-0 border-b-2 border-gray-800 appearance-none text-black dark:border-gray-800 dark:focus:border-yellow-500 focus:outline-none focus:ring-0 focus:border-yellow-800 peer"
 
             type="password" 
             name="confirmarSenha" 
@@ -204,7 +205,7 @@ function Cadastro() {
 
             <button
               type='submit'
-              className='mt-3 text-white bg-[#f1af09] hover:bg-slate-900 w-[15vw] py-2 flex justify-center rounded-4xl' >
+              className='mt-3 text-white bg-[#f1af09] transform hover:scale-105 lg:w-[15vw] w-1/2 py-2 flex justify-center rounded-4xl' >
               {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> :
                 <span>Cadastrar</span>
               }

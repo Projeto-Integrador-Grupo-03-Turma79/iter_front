@@ -12,9 +12,7 @@ export default function Footer() {
             <Link to='/home' className="flex items-center">
               <img src={Logo3} className="h-18" alt="Iter Logo" />
             </Link>
-          </div>
-
-        
+          </div> 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
               <ul className="flex flex-col items-center md:items-start">
