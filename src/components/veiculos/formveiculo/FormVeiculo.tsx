@@ -99,12 +99,12 @@ function FormVeiculo() {
     return (
 
         <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
-            <div className="bg-[#FFFDD0] p-10 rounded-lg shadow-lg w-[50%]">
-                <h1 className="text-4xl font-bold text-gray-900 mb-6">
-                    {id === undefined ? 'Cadastrar Motorista' : 'Editar Veiculo'}
+            <div className="bg-[#FFFDD0] p-10 rounded-lg shadow-lg w-[70%] sm:w-[40%]">
+                <h1 className="text-4xl font-bold text-gray-900 mb-6 flex ju">
+                    {id === undefined ? 'Cadastrar Motorista' : 'Editar Cadastro de Motorista'}
                 </h1>
 
-                <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoVeiculo}>
+                <form className="w-full flex flex-col gap-4" onSubmit={gerarNovoVeiculo}>
 
                     <div className="flex flex-col">
                         <label htmlFor="motorista" className="text-gray-800">Nome do motorista</label>
@@ -150,7 +150,7 @@ function FormVeiculo() {
                             value={veiculo.cor} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
                     </div>
 
-                    <button type="submit" className="mt-4 bg-[#003152] text-white py-2 px-6 rounded-full shadow-md hover:bg-[#22253d] transition">
+                    <button type="submit" className="mt-4 bg-[#003152] text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition flex justify-center ">
                         {isLoading ?
                             <RotatingLines
                                 strokeColor="white"
@@ -163,7 +163,9 @@ function FormVeiculo() {
 
                         }
                     </button>
-
+                    <button onClick={retornar} className="bg-[#444444] text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition flex justify-center ">
+                        <span>Cancelar</span>
+                    </button>
                 </form>
             </div>
         </div>

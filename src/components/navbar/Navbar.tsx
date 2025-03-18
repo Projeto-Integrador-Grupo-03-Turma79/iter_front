@@ -22,8 +22,6 @@ export default function Navbar() {
                     <div className="flex justify-end text-1xl ml-8">
                         <div className='flex gap-1/2 pg-1 items-center w-20'>
                            <Link to='/home'>  <img src={Logo}  className="h-10 mt-5 mb-5" /> </Link>
-                           
-
                         </div>
                     </div>
                     <div className="container flex justify-end text-2x1 font-mono">

@@ -140,91 +140,94 @@ function FormViagem() {
 
     return (
 
-        <div className="min-h-screen flex items-center justify-center bg-[#fafafa]">
-            <div className="bg-[#FFFDD0] p-10 rounded-lg shadow-lg w-[50%]">
-                <h1 className="text-4xl font-bold text-gray-900 mb-6">
-                    {id === undefined ? 'Cadastrar Viagem' : 'Editar Veiculo'}
+        <div className="min-h-screen flex items-center justify-center bg-[#fafafa] ">
+            <div className="bg-[#FFFDD0] p-10 rounded-lg shadow-lg xl:w-[40%] w-[70%] ">
+                <h1 className="text-4xl font-bold text-gray-900 mb-6 flex justify-center">
+                    {id === undefined ? 'Cadastrar Viagem' : 'Editar Viagem'}
                 </h1>
 
-            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoViagem}>
+                <form className="w-full flex flex-col gap-4" onSubmit={gerarNovoViagem}>
 
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="origem">Origem da sua viagem</label>
-                    <SelectEstado onChange={setSelectedUf} />
-                    <SelectCidade
-                        uf={selectedUf}
-                        onChange={(cidadeSelecionada: string) => 
-                            atualizarEstado({ target: { name: "origem", value: cidadeSelecionada } } as ChangeEvent<HTMLInputElement>)
-                        }
-                    />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="destino">Destino da sua viagem</label>
-                    <SelectEstado onChange={setSelectedUf} />
-                    <SelectCidade
-                        uf={selectedUf}
-                        onChange={(cidadeSelecionada: string) =>
-                            atualizarEstado({ target: { name: "destino", value: cidadeSelecionada} } as ChangeEvent<HTMLInputElement>)
-                        }
-                    />
-                </div>
-
-                <div className="flex flex-col">
-                    <label htmlFor="valor">valor</label>
-                    <input type="text" placeholder="valor da viagem"
-                        name='preco' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" 
-                        value={viagem.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
-                </div>
-
-                <div className="flex flex-col">
-                    <label htmlFor="hora">Horário da sua viagem</label>
-                    <input type="text" placeholder="Horário da viagem"
-                        name='hora' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" 
-                        value={viagem.hora} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="data">Data da sua viagem</label>
-                    <input type="date" name='data'
-                        className="border-b-2 border-black focus:outline-none p-2 bg-transparent" value={viagem.data}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
-                </div>
-
-                <div className="flex flex-col gap-2">
-                    <label htmlFor="distancia">Distância da sua viagem</label>
-                    <input type="text" placeholder="Distância da viagem"
-                        name='distancia' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" value={viagem.distancia}
-                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
-                </div>                
-
-                <div className="flex flex-col gap-2">
-                    <p>Veículo da Viagem</p>
-                    <select name="veiculo" id="veiculo" className='border-black focus:outline-none p-2 bg-transparent'
-                        onChange={(e) => buscarVeiculoPorId(e.currentTarget.value)}
-                    >
-                        <option defaultValue="" selected disabled>Selecione um Veículo</option>
-                        {veiculos.map((veiculo) => (
-                            <option key={veiculo.id} value={veiculo.id}>{veiculo.modelo}</option>
-                        ))}
-                    </select>
-                </div>
-
-                <button type="submit" className="mt-4 bg-[#003152] text-white py-2 px-6 rounded-full shadow-md hover:bg-[#22253d] transition">
-                    {isLoading ? (
-                        <RotatingLines
-                            strokeColor="white"
-                            strokeWidth="5"
-                            animationDuration="0.75"
-                            width="24"
-                            visible={true}
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="origem">Origem da sua viagem</label>
+                        <SelectEstado onChange={setSelectedUf} />
+                        <SelectCidade
+                            uf={selectedUf}
+                            onChange={(cidadeSelecionada: string) => 
+                                atualizarEstado({ target: { name: "origem", value: cidadeSelecionada } } as ChangeEvent<HTMLInputElement>)
+                            }
                         />
-                    ) : (
-                        <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
-                    )}
-                </button>
+                    </div>
 
-            </form>
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="destino">Destino da sua viagem</label>
+                        <SelectEstado onChange={setSelectedUf} />
+                        <SelectCidade
+                            uf={selectedUf}
+                            onChange={(cidadeSelecionada: string) =>
+                                atualizarEstado({ target: { name: "destino", value: cidadeSelecionada} } as ChangeEvent<HTMLInputElement>)
+                            }
+                        />
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label htmlFor="valor">Valor</label>
+                        <input type="text" placeholder="valor da viagem"
+                            name='preco' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" 
+                            value={viagem.preco} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label htmlFor="hora">Horário da sua viagem</label>
+                        <input type="text" placeholder="Horário da viagem"
+                            name='hora' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" 
+                            value={viagem.hora} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="data">Data da sua viagem</label>
+                        <input type="date" name='data'
+                            className="border-b-2 border-black focus:outline-none p-2 bg-transparent" value={viagem.data}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                        <label htmlFor="distancia">Distância da sua viagem</label>
+                        <input type="text" placeholder="Distância da viagem"
+                            name='distancia' className="border-b-2 border-black focus:outline-none p-2 bg-transparent" value={viagem.distancia}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+                    </div>                
+
+                    <div className="flex flex-col gap-2">
+                        <p>Veículo da Viagem</p>
+                        <select name="veiculo" id="veiculo" className='border-black focus:outline-none p-2 bg-transparent'
+                            onChange={(e) => buscarVeiculoPorId(e.currentTarget.value)}
+                        >
+                            <option defaultValue="" selected disabled>Selecione um Veículo</option>
+                            {veiculos.map((veiculo) => (
+                                <option key={veiculo.id} value={veiculo.id}>{veiculo.modelo}</option>
+                            ))}
+                        </select>
+                    </div>
+
+                    <button type="submit" className="mt-4 bg-[#003152] text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition flex justify-center ">
+                        {isLoading ? (
+                            <RotatingLines
+                                strokeColor="white"
+                                strokeWidth="5"
+                                animationDuration="0.75"
+                                width="24"
+                                visible={true}
+                            />
+                        ) : (
+                            <span>{id === undefined ? 'Cadastrar' : 'Atualizar'}</span>
+                        )}
+                    </button>
+                    <button type="submit" className="bg-[#444444] text-white py-2 px-6 rounded-full shadow-md hover:scale-105 transition flex justify-center ">
+                        <span>Cancelar</span>
+                    </button>
+
+                </form>
             </div>
         </div>
     );
