@@ -1,3 +1,5 @@
+import FotoSobre from "../../assets/Logo Minimalista Auto Escola Amarelo e Preto (12).svg";
+
 function Sobre() {
 
     const colaboradores = [
@@ -43,13 +45,12 @@ function Sobre() {
         <div className="flex flex-col items-center py-10 px-5 bg-[#efefef]">
             <h1 className="text-4xl font-bold xl:pb-10 ">Sobre nós</h1>
             <article className="px-10 text-justify xl:flex xl:justify-center ">
-                <img className="xl:h-130 xl:w-150 float-left" src="../../../src/assets/Logo Minimalista Auto Escola Amarelo e Preto (12).svg"/>
+                <img className="xl:h-130 xl:w-150 float-left" src={FotoSobre}/>
                 <div className="xl:w-1/4">
                     <p>​​ &nbsp;&nbsp; A Iter foi criada para oferecer um transporte acessível, seguro e confortável para quem não possui veículo próprio. Com tarifas econômicas, garantimos que nossos passageiros cheguem aos seus compromissos com tranquilidade e comodidade.</p>
                     <p> &nbsp;&nbsp; Além disso, geramos oportunidades de emprego para quem busca uma renda extra ou deseja trabalhar de forma autônoma, garantindo mais flexibilidade e independência financeira.</p>
                     <p> &nbsp;&nbsp; Além de facilitar a mobilidade urbana, contribuímos para a redução do trânsito e do impacto ambiental ao incentivar o compartilhamento de viagens.</p>
                     <p> &nbsp;&nbsp; Nossa plataforma intuitiva e de fácil acesso permite que os usuários solicitem corridas rapidamente, conectando passageiros a motoristas de maneira eficiente e segura.</p>
-                    <p> &nbsp;&nbsp; Na Iter, a confiança e a qualidade do serviço </p>
                     <p> &nbsp;&nbsp; Seja para um deslocamento diário, uma viagem de última hora ou um compromisso importante, estamos aqui para tornar cada trajeto mais prático e agradável.</p>
                 </div>
            </article>      

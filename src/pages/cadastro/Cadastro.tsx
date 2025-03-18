@@ -143,7 +143,7 @@ function Cadastro() {
             value={usuario.celular}
             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
             />
-            <label htmlFor="celular" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-600 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular</label>
+            <label htmlFor="celular" className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-yellow-600 peer-focus:dark:text-yellow-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Celular (com DDD) </label>
           </div>
           
           <div className="flex flex-col w-full relative lg:w-[25vw] z-0 mb-5">
@@ -169,6 +169,7 @@ function Cadastro() {
                     </svg>
                     Pelo menos 8 caracteres
                   </li>
+                <h3 className="font-semibold text-gray-900 dark:text-white pt-2">É recomendável ter:</h3>
                 <ul className="text-gray-500 dark:text-gray-400">
                   <li className="flex items-center mb-1">
                     <svg className={`w-3.5 h-3.5 me-2 ${temMinusculaMaiuscula ? "text-green-500" : "text-gray-400"}`} fill="none" viewBox="0 0 16 12">
@@ -180,7 +181,7 @@ function Cadastro() {
                     <svg className={`w-3 h-3 me-2.5 ${temSimbolo ? "text-green-500" : "text-gray-400" }`} fill="none" viewBox="0 0 14 14" >
                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5" />
                     </svg>
-                    Pelo menos um símbolo (#@$!%*?&)
+                    Pelo menos um símbolo (#@$!%*)
                   </li>
                   
                 </ul>

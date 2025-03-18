@@ -23,15 +23,15 @@ export default function Navbar() {
   return (
     <nav className='w-full bg-[#FFF] text-black flex justify-between items-center shadow-[0_4px_6px_rgba(0,0,0,0.6)]'>
       {usuario.token ? (
-        <div className="max-w-screen-xl flex flex-wrap ml-12 items-center justify-between mx-auto p-4 w-full">
-          <a href="http://localhost:5173/home" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <div className="mr-12 text-[18px] flex flex-wrap ml-12 items-center justify-between mx-auto p-4 w-full">
+          <Link to="/home" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src={Logo} className="h-15" alt="Iter Logo" />
-          </a>
+          </Link>
 
           <button
             onClick={toggleMenu}
             type="button"
-            className="inline-flex items-center p-2 w-10 h-10 ml-auto justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+            className="inline-flex items-center p-2 w-10 h-10 ml-auto justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="navbar-default"
             aria-expanded={isMenuOpen ? "true" : "false"}
           >
@@ -54,17 +54,12 @@ export default function Navbar() {
           </button>
 
 
-          <div
-            className={`${
-              isMenuOpen ? "block" : "hidden"
-            } w-full md:block md:w-auto`}
-            id="navbar-default"
-          >
-            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 ml-auto border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+          <div className={`${ isMenuOpen ? "block" : "hidden" } w-full  md:block md:w-auto`} id="navbar-default" >
+            <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 ml-auto border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white">
               <li>
                 <Link
                   to="/viagens"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:underline md:p-0"
                 >
                   Encontrar Viagem
                 </Link>
@@ -72,7 +67,7 @@ export default function Navbar() {
               <li>
                 <Link
                   to="/nossosmotoristas"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 hover:underline md:p-0 "
                 >
                   Nossos Motoristas
                 </Link>
@@ -80,7 +75,7 @@ export default function Navbar() {
               <li>
                 <Link
                   to="/meuperfil"
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  hover:underline md:p-0 "
                 >
                   Meu Perfil
                 </Link>
@@ -89,7 +84,7 @@ export default function Navbar() {
                 <Link
                   to="/home"
                   onClick={saida}
-                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0  hover:underline md:p-0 "
                 >
                   Sair
                 </Link>
@@ -101,27 +96,20 @@ export default function Navbar() {
         <div className="flex justify-between text-1xl ml-8 w-full items-center">
           <div className='flex gap-1 items-center w-20'>
             <Link to='/home'>
-              <img src={Logo} className="h-10 mt-5 mb-5" alt="Logo" />
+              <img src={Logo} className="h-10 my-5 ml-7 transform hover:scale-105" alt="Logo" />
             </Link>
           </div>
 
-          <ul className="font-medium flex space-x-8 mr-7 md:space-x-8 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 ml-auto">
+          <ul className="font-medium flex text-[20px] space-x-8 mr-15 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white ml-auto">
             <li>
-              <a
-                href="/logar"
-                className="block py-2 px-3 text-white bg-blue-700 rounded-sm md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-                aria-current="page"
-              >
+              <Link to="/logar" className="block py-2 px-3 text-gray-900  rounded-sm md:bg-transparent hover:underline ">
                 Login
-              </a>
+              </Link>
             </li>
             <li>
-              <a
-                href="/sobre"
-                className="block py-2 px-3 text-gray-900 rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-              >
+              <Link to="/sobre" className="block py-2 px-3 text-gray-900  rounded-sm md:bg-transparent hover:underline ">
                 Sobre
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
